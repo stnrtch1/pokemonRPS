@@ -1,0 +1,377 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px; }
+
+.header {
+  font-size: 30px;
+  font-weight: bold; }
+
+.selection__header {
+  font-size: 30px;
+  font-weight: bold; }
+
+.selection__selectedTypes {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 450px; }
+  .selection__selectedTypes .selected__type {
+    width: 100px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: solid 2px black;
+    text-align: center;
+    margin-top: 15px;
+    color: black; }
+    .selection__selectedTypes .selected__type--Normal {
+      background-color: #A8A878; }
+      .selection__selectedTypes .selected__type--Normal:hover {
+        cursor: pointer;
+        background-color: #6D6D4E; }
+      .selection__selectedTypes .selected__type--Normal:disabled {
+        cursor: not-allowed;
+        background-color: #6D6D4E;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Fighting {
+      background-color: #C03028; }
+      .selection__selectedTypes .selected__type--Fighting:hover {
+        cursor: pointer;
+        background-color: #7D1F1A; }
+      .selection__selectedTypes .selected__type--Fighting:disabled {
+        cursor: not-allowed;
+        background-color: #7D1F1A;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Flying {
+      background-color: #A890F0; }
+      .selection__selectedTypes .selected__type--Flying:hover {
+        cursor: pointer;
+        background-color: #6D5E9C; }
+      .selection__selectedTypes .selected__type--Flying:disabled {
+        cursor: not-allowed;
+        background-color: #6D5E9C;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Poison {
+      background-color: #A040A0; }
+      .selection__selectedTypes .selected__type--Poison:hover {
+        cursor: pointer;
+        background-color: #682A68; }
+      .selection__selectedTypes .selected__type--Poison:disabled {
+        cursor: not-allowed;
+        background-color: #682A68;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Ground {
+      background-color: #E0C068; }
+      .selection__selectedTypes .selected__type--Ground:hover {
+        cursor: pointer;
+        background-color: #927D44; }
+      .selection__selectedTypes .selected__type--Ground:disabled {
+        cursor: not-allowed;
+        background-color: #927D44;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Rock {
+      background-color: #B8A038; }
+      .selection__selectedTypes .selected__type--Rock:hover {
+        cursor: pointer;
+        background-color: #786824; }
+      .selection__selectedTypes .selected__type--Rock:disabled {
+        cursor: not-allowed;
+        background-color: #786824;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Bug {
+      background-color: #A8B820; }
+      .selection__selectedTypes .selected__type--Bug:hover {
+        cursor: pointer;
+        background-color: #6D7815; }
+      .selection__selectedTypes .selected__type--Bug:disabled {
+        cursor: not-allowed;
+        background-color: #6D7815;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Ghost {
+      background-color: #705898; }
+      .selection__selectedTypes .selected__type--Ghost:hover {
+        cursor: pointer;
+        background-color: #493963; }
+      .selection__selectedTypes .selected__type--Ghost:disabled {
+        cursor: not-allowed;
+        background-color: #493963;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Steel {
+      background-color: #B8B8D0; }
+      .selection__selectedTypes .selected__type--Steel:hover {
+        cursor: pointer;
+        background-color: #787887; }
+      .selection__selectedTypes .selected__type--Steel:disabled {
+        cursor: not-allowed;
+        background-color: #787887;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Fire {
+      background-color: #F08030; }
+      .selection__selectedTypes .selected__type--Fire:hover {
+        cursor: pointer;
+        background-color: #9C531F; }
+      .selection__selectedTypes .selected__type--Fire:disabled {
+        cursor: not-allowed;
+        background-color: #9C531F;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Water {
+      background-color: #6890F0; }
+      .selection__selectedTypes .selected__type--Water:hover {
+        cursor: pointer;
+        background-color: #445E9C; }
+      .selection__selectedTypes .selected__type--Water:disabled {
+        cursor: not-allowed;
+        background-color: #445E9C;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Grass {
+      background-color: #78C850; }
+      .selection__selectedTypes .selected__type--Grass:hover {
+        cursor: pointer;
+        background-color: #4E8234; }
+      .selection__selectedTypes .selected__type--Grass:disabled {
+        cursor: not-allowed;
+        background-color: #4E8234;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Electric {
+      background-color: #F8D030; }
+      .selection__selectedTypes .selected__type--Electric:hover {
+        cursor: pointer;
+        background-color: #A1871F; }
+      .selection__selectedTypes .selected__type--Electric:disabled {
+        cursor: not-allowed;
+        background-color: #A1871F;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Psychic {
+      background-color: #F85888; }
+      .selection__selectedTypes .selected__type--Psychic:hover {
+        cursor: pointer;
+        background-color: #A13959; }
+      .selection__selectedTypes .selected__type--Psychic:disabled {
+        cursor: not-allowed;
+        background-color: #A13959;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Ice {
+      background-color: #98D8D8; }
+      .selection__selectedTypes .selected__type--Ice:hover {
+        cursor: pointer;
+        background-color: #638D8D; }
+      .selection__selectedTypes .selected__type--Ice:disabled {
+        cursor: not-allowed;
+        background-color: #638D8D;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Dragon {
+      background-color: #7038F8; }
+      .selection__selectedTypes .selected__type--Dragon:hover {
+        cursor: pointer;
+        background-color: #4924A1; }
+      .selection__selectedTypes .selected__type--Dragon:disabled {
+        cursor: not-allowed;
+        background-color: #4924A1;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Dark {
+      background-color: #705848; }
+      .selection__selectedTypes .selected__type--Dark:hover {
+        cursor: pointer;
+        background-color: #49392F; }
+      .selection__selectedTypes .selected__type--Dark:disabled {
+        cursor: not-allowed;
+        background-color: #49392F;
+        color: #CCCCCC; }
+    .selection__selectedTypes .selected__type--Fairy {
+      background-color: #EE99AC; }
+      .selection__selectedTypes .selected__type--Fairy:hover {
+        cursor: pointer;
+        background-color: #9B6470; }
+      .selection__selectedTypes .selected__type--Fairy:disabled {
+        cursor: not-allowed;
+        background-color: #9B6470;
+        color: #CCCCCC; }
+
+.selection__selectTypes {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 450px; }
+  .selection__selectTypes .select__type {
+    width: 100px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: solid 2px black;
+    text-align: center;
+    margin-top: 15px;
+    color: white; }
+    .selection__selectTypes .select__type--Normal {
+      background-color: #A8A878; }
+      .selection__selectTypes .select__type--Normal:hover {
+        cursor: pointer;
+        background-color: #6D6D4E; }
+      .selection__selectTypes .select__type--Normal:disabled {
+        cursor: not-allowed;
+        background-color: #6D6D4E;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Fighting {
+      background-color: #C03028; }
+      .selection__selectTypes .select__type--Fighting:hover {
+        cursor: pointer;
+        background-color: #7D1F1A; }
+      .selection__selectTypes .select__type--Fighting:disabled {
+        cursor: not-allowed;
+        background-color: #7D1F1A;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Flying {
+      background-color: #A890F0; }
+      .selection__selectTypes .select__type--Flying:hover {
+        cursor: pointer;
+        background-color: #6D5E9C; }
+      .selection__selectTypes .select__type--Flying:disabled {
+        cursor: not-allowed;
+        background-color: #6D5E9C;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Poison {
+      background-color: #A040A0; }
+      .selection__selectTypes .select__type--Poison:hover {
+        cursor: pointer;
+        background-color: #682A68; }
+      .selection__selectTypes .select__type--Poison:disabled {
+        cursor: not-allowed;
+        background-color: #682A68;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Ground {
+      background-color: #E0C068; }
+      .selection__selectTypes .select__type--Ground:hover {
+        cursor: pointer;
+        background-color: #927D44; }
+      .selection__selectTypes .select__type--Ground:disabled {
+        cursor: not-allowed;
+        background-color: #927D44;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Rock {
+      background-color: #B8A038; }
+      .selection__selectTypes .select__type--Rock:hover {
+        cursor: pointer;
+        background-color: #786824; }
+      .selection__selectTypes .select__type--Rock:disabled {
+        cursor: not-allowed;
+        background-color: #786824;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Bug {
+      background-color: #A8B820; }
+      .selection__selectTypes .select__type--Bug:hover {
+        cursor: pointer;
+        background-color: #6D7815; }
+      .selection__selectTypes .select__type--Bug:disabled {
+        cursor: not-allowed;
+        background-color: #6D7815;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Ghost {
+      background-color: #705898; }
+      .selection__selectTypes .select__type--Ghost:hover {
+        cursor: pointer;
+        background-color: #493963; }
+      .selection__selectTypes .select__type--Ghost:disabled {
+        cursor: not-allowed;
+        background-color: #493963;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Steel {
+      background-color: #B8B8D0; }
+      .selection__selectTypes .select__type--Steel:hover {
+        cursor: pointer;
+        background-color: #787887; }
+      .selection__selectTypes .select__type--Steel:disabled {
+        cursor: not-allowed;
+        background-color: #787887;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Fire {
+      background-color: #F08030; }
+      .selection__selectTypes .select__type--Fire:hover {
+        cursor: pointer;
+        background-color: #9C531F; }
+      .selection__selectTypes .select__type--Fire:disabled {
+        cursor: not-allowed;
+        background-color: #9C531F;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Water {
+      background-color: #6890F0; }
+      .selection__selectTypes .select__type--Water:hover {
+        cursor: pointer;
+        background-color: #445E9C; }
+      .selection__selectTypes .select__type--Water:disabled {
+        cursor: not-allowed;
+        background-color: #445E9C;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Grass {
+      background-color: #78C850; }
+      .selection__selectTypes .select__type--Grass:hover {
+        cursor: pointer;
+        background-color: #4E8234; }
+      .selection__selectTypes .select__type--Grass:disabled {
+        cursor: not-allowed;
+        background-color: #4E8234;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Electric {
+      background-color: #F8D030; }
+      .selection__selectTypes .select__type--Electric:hover {
+        cursor: pointer;
+        background-color: #A1871F; }
+      .selection__selectTypes .select__type--Electric:disabled {
+        cursor: not-allowed;
+        background-color: #A1871F;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Psychic {
+      background-color: #F85888; }
+      .selection__selectTypes .select__type--Psychic:hover {
+        cursor: pointer;
+        background-color: #A13959; }
+      .selection__selectTypes .select__type--Psychic:disabled {
+        cursor: not-allowed;
+        background-color: #A13959;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Ice {
+      background-color: #98D8D8; }
+      .selection__selectTypes .select__type--Ice:hover {
+        cursor: pointer;
+        background-color: #638D8D; }
+      .selection__selectTypes .select__type--Ice:disabled {
+        cursor: not-allowed;
+        background-color: #638D8D;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Dragon {
+      background-color: #7038F8; }
+      .selection__selectTypes .select__type--Dragon:hover {
+        cursor: pointer;
+        background-color: #4924A1; }
+      .selection__selectTypes .select__type--Dragon:disabled {
+        cursor: not-allowed;
+        background-color: #4924A1;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Dark {
+      background-color: #705848; }
+      .selection__selectTypes .select__type--Dark:hover {
+        cursor: pointer;
+        background-color: #49392F; }
+      .selection__selectTypes .select__type--Dark:disabled {
+        cursor: not-allowed;
+        background-color: #49392F;
+        color: #CCCCCC; }
+    .selection__selectTypes .select__type--Fairy {
+      background-color: #EE99AC; }
+      .selection__selectTypes .select__type--Fairy:hover {
+        cursor: pointer;
+        background-color: #9B6470; }
+      .selection__selectTypes .select__type--Fairy:disabled {
+        cursor: not-allowed;
+        background-color: #9B6470;
+        color: #CCCCCC; }
+
+.selection__confirm {
+  width: 450px;
+  display: flex; }
+  .selection__confirm .confirm__button {
+    width: 100px;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: solid 2px black;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px; }
+
+/*# sourceMappingURL=styles.css.map */

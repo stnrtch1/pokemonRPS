@@ -1,0 +1,229 @@
+@mixin typeContainer($color){
+    width: 100px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: solid 2px black;
+    text-align: center;
+    margin-top: 15px;
+    color:$color
+}
+
+@mixin typeColor($color,$hover){
+    background-color: $color;
+
+    &:hover{
+        cursor: pointer;
+        background-color: $hover;
+    }
+
+    &:disabled{
+        cursor: not-allowed;
+        background-color: $hover;
+        color: #CCCCCC;
+    }
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.main{
+
+}
+
+.header{
+    font-size: 30px;
+    font-weight: bold; 
+}
+
+.selection{
+    &__header{
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    &__selectedTypes{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        width:450px;
+
+        .selected__type{
+            @include typeContainer(black);
+
+            &--Normal{
+                @include typeColor(#A8A878,#6D6D4E);
+            }
+
+            &--Fighting{
+                @include typeColor(#C03028,#7D1F1A);
+            }
+
+            &--Flying{
+                @include typeColor(#A890F0,#6D5E9C);
+            }
+
+            &--Poison{
+                @include typeColor(#A040A0,#682A68);
+            }
+
+            &--Ground{
+                @include typeColor(#E0C068,#927D44);
+            }
+
+            &--Rock{
+                @include typeColor(#B8A038,#786824);
+            }
+
+            &--Bug{
+                @include typeColor(#A8B820,#6D7815);
+            }
+
+            &--Ghost{
+                @include typeColor(#705898,#493963);
+            }
+
+            &--Steel{
+                @include typeColor(#B8B8D0,#787887);
+            }
+
+            &--Fire{
+                @include typeColor(#F08030,#9C531F);
+            }
+
+            &--Water{
+                @include typeColor(#6890F0,#445E9C);
+            }
+
+            &--Grass{
+                @include typeColor(#78C850,#4E8234);
+            }
+
+            &--Electric{
+                @include typeColor(#F8D030,#A1871F);
+            }
+
+            &--Psychic{
+                @include typeColor(#F85888,#A13959);
+            }
+
+            &--Ice{
+                @include typeColor(#98D8D8,#638D8D);
+            }
+
+            &--Dragon{
+                @include typeColor(#7038F8,#4924A1);
+            }
+
+            &--Dark{
+                @include typeColor(#705848,#49392F);
+            }
+
+            &--Fairy{
+                @include typeColor(#EE99AC,#9B6470);
+            }
+        }
+
+    }
+
+    &__selectTypes{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        width: 450px;
+
+
+        .select__type{
+            @include typeContainer(white);
+
+            &--Normal{
+                @include typeColor(#A8A878,#6D6D4E);
+            }
+
+            &--Fighting{
+                @include typeColor(#C03028,#7D1F1A);
+            }
+
+            &--Flying{
+                @include typeColor(#A890F0,#6D5E9C);
+            }
+
+            &--Poison{
+                @include typeColor(#A040A0,#682A68);
+            }
+
+            &--Ground{
+                @include typeColor(#E0C068,#927D44);
+            }
+
+            &--Rock{
+                @include typeColor(#B8A038,#786824);
+            }
+
+            &--Bug{
+                @include typeColor(#A8B820,#6D7815);
+            }
+
+            &--Ghost{
+                @include typeColor(#705898,#493963);
+            }
+
+            &--Steel{
+                @include typeColor(#B8B8D0,#787887);
+            }
+
+            &--Fire{
+                @include typeColor(#F08030,#9C531F);
+            }
+
+            &--Water{
+                @include typeColor(#6890F0,#445E9C);
+            }
+
+            &--Grass{
+                @include typeColor(#78C850,#4E8234);
+            }
+
+            &--Electric{
+                @include typeColor(#F8D030,#A1871F);
+            }
+
+            &--Psychic{
+                @include typeColor(#F85888,#A13959);
+            }
+
+            &--Ice{
+                @include typeColor(#98D8D8,#638D8D);
+            }
+
+            &--Dragon{
+                @include typeColor(#7038F8,#4924A1);
+            }
+
+            &--Dark{
+                @include typeColor(#705848,#49392F);
+            }
+
+            &--Fairy{
+                @include typeColor(#EE99AC,#9B6470);
+            }
+        }
+    }
+
+    &__confirm{
+        width: 450px;
+        display: flex;
+
+        .confirm__button{
+            width: 100px;
+            margin: 0 auto;
+            border-radius: 10px;
+            border: solid 2px black;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 20px;
+        }
+        
+    }
+}

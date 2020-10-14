@@ -1,0 +1,17 @@
+{
+  "name": "master-catalog-package",
+  "version": "1.0.0",
+  "description": "Node package mostly used for styling with gulp",
+  "main": "index.js",
+  "devDependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^4.11.0"
+  },
+  "dependencies": {
+    "gulp": "^4.0.0"
+  },
+  "author": "Austin Rtichie",
+  "license": "ISC"
+}
