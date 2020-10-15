@@ -26,6 +26,17 @@ let btnConfirm;
 //type array
 let selectedTypeArray = [];
 
+//--------------------------------------------------------------PRIVATE FUNCTIONS
+function enableTypes($type){
+    //this function will re-enable every type button, except the specified type in argument
+    let typeButtons = document.getElementsByClassName("select__type");
+    for (let i = 0; i < typeButtons.length; i++){
+        if(typeButtons[i].innerHTML != $type){
+            typeButtons[i].disabled = false;
+        }
+    }
+}
+
 //add type function
 function addType($type){
     if(selectedTypeArray.length != 2){
@@ -77,8 +88,19 @@ function removeType($index){
         console.log("First Type Removed");
         
     }else if($index == 1){
+        //removed the second type from the selected group
         console.log("Second Type Removed");
+        selectedTypeArray.splice(1,1);
+        let removeType = btnSelectedTypeTwo.innerHTML;
+        btnSelectedTypeTwo.classList.remove("selected__type--"+ removeType);
+        btnSelectedTypeTwo.innerHTML = "?";
+        btnSelectedTypeTwo.disabled = true;
+
+        //get the first type from the array and then re-enable all buttons except that type
+        let type = btnSelectedTypeOne.innerHTML;
+        enableTypes(type);
     }
+
 }
 
 function main(){
