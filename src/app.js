@@ -27,16 +27,27 @@ let btnConfirm;
 let selectedTypeArray = [];
 
 //--------------------------------------------------------------PRIVATE FUNCTIONS
-function enableTypes($type){
-    //this function will re-enable every type button, except the specified type in argument
+function enableTypes($type,$mode){
+    //$type is the selected type
+    //$mode decides what is done with the type:
+    //0 = just that type enabled
+    //1 = every type except the selected type
     let typeButtons = document.getElementsByClassName("select__type");
     for (let i = 0; i < typeButtons.length; i++){
-        if(typeButtons[i].innerHTML != $type){
-            typeButtons[i].disabled = false;
+        if($mode == 0){
+            if(typeButtons[i].innerHTML == $type){
+                typeButtons[i].disabled = false;
+            }
+        }else if ($mode == 1){
+            if(typeButtons[i].innerHTML != $type){
+                typeButtons[i].disabled = false;
+            }
         }
+        
     }
 }
 
+//--------------------------------------------------------------EVENT LISTENERS
 //add type function
 function addType($type){
     if(selectedTypeArray.length != 2){
@@ -86,7 +97,22 @@ function removeType($index){
     */
     if($index == 0){
         console.log("First Type Removed");
-        
+        selectedTypeArray.splice(0,1);
+        //what happens with the first type removed, changes depending if there is one or two types selected
+        //if there is one type, then you just clear the button and re-enable the type button
+        //if there is two types, then you clear the old first type, then move the second type to the first button and re-enable all the other type buttons
+        if(selectedTypeArray.length > 1){
+            //here it there is two types
+            
+        }else{
+            //here if there is only one type
+            let removeType = btnSelectedTypeOne.innerHTML;
+            btnSelectedTypeOne.classList.remove("selected__type--"+ removeType);
+            btnSelectedTypeOne.innerHTML = "?";
+            btnSelectedTypeOne.disabled = true;
+            //re-enable the removed type
+            enableTypes(removeType,0);
+        }
     }else if($index == 1){
         //removed the second type from the selected group
         console.log("Second Type Removed");
@@ -98,7 +124,7 @@ function removeType($index){
 
         //get the first type from the array and then re-enable all buttons except that type
         let type = btnSelectedTypeOne.innerHTML;
-        enableTypes(type);
+        enableTypes(type,1);
     }
 
 }
