@@ -97,13 +97,23 @@ function removeType($index){
     */
     if($index == 0){
         console.log("First Type Removed");
-        selectedTypeArray.splice(0,1);
         //what happens with the first type removed, changes depending if there is one or two types selected
         //if there is one type, then you just clear the button and re-enable the type button
         //if there is two types, then you clear the old first type, then move the second type to the first button and re-enable all the other type buttons
         if(selectedTypeArray.length > 1){
-            //here it there is two types
+            //here if there is two types
+            //replace the first button with the second
+            let originalType = btnSelectedTypeOne.innerHTML;
+            let replacedType = btnSelectedTypeTwo.innerHTML;
+            btnSelectedTypeOne.innerHTML = replacedType;
+            btnSelectedTypeTwo.innerHTML = "?";
+            btnSelectedTypeTwo.disabled = true;
             
+            btnSelectedTypeOne.classList.remove("selected__type--"+ originalType);
+            btnSelectedTypeOne.classList.add("selected__type--"+ replacedType);
+            btnSelectedTypeTwo.classList.remove("selected__type--"+ replacedType);
+            //now re-enable all the other buttons
+            enableTypes(replacedType,1);
         }else{
             //here if there is only one type
             let removeType = btnSelectedTypeOne.innerHTML;
@@ -113,6 +123,7 @@ function removeType($index){
             //re-enable the removed type
             enableTypes(removeType,0);
         }
+        selectedTypeArray.splice(0,1);
     }else if($index == 1){
         //removed the second type from the selected group
         console.log("Second Type Removed");
