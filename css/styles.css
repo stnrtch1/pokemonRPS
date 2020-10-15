@@ -23,6 +23,8 @@ body {
     text-align: center;
     margin-top: 15px;
     color: black; }
+    .selection__selectedTypes .selected__type:disabled {
+      cursor: not-allowed; }
     .selection__selectedTypes .selected__type--Normal {
       background-color: #A8A878; }
       .selection__selectedTypes .selected__type--Normal:hover {
@@ -199,6 +201,8 @@ body {
     text-align: center;
     margin-top: 15px;
     color: white; }
+    .selection__selectTypes .select__type:disabled {
+      cursor: not-allowed; }
     .selection__selectTypes .select__type--Normal {
       background-color: #A8A878; }
       .selection__selectTypes .select__type--Normal:hover {

@@ -35,13 +35,14 @@ function addType($type){
             btnSelectedTypeOne.classList.add("selected__type--" + $type);
             //add the type to the selected type array
             selectedTypeArray.push($type);
+            btnSelectedTypeOne.disabled = false;
         } else if(selectedTypeArray.length == 1){
             //if one type is already selected, add this to the second section and disable the remaining buttons
             btnSelectedTypeTwo.innerHTML = $type;
             btnSelectedTypeTwo.classList.add("selected__type--" + $type);
             //add the type to the selected type array
             selectedTypeArray.push($type);
-    
+            btnSelectedTypeTwo.disabled = false;
             //Grab all unused buttons and disable them all when two types are selected
             let typeButtons = document.getElementsByClassName("select__type");
             for (let i = 0; i < typeButtons.length; i++){
@@ -62,7 +63,22 @@ function addType($type){
 
 //remove type function
 function removeType($index){
+    /*TODO
+        Removing a type:
+        - Remove the type from the selectedTypeArray
+        - Re-enable the type button from the type selection
+        - Clear the selected type button
+        Removing a type when there are two selected:
+        - If first type is removed, move the second type to the first button
+        - Regardless of type removed, all unused buttons need to turn back on
     
+    */
+    if($index == 0){
+        console.log("First Type Removed");
+        
+    }else if($index == 1){
+        console.log("Second Type Removed");
+    }
 }
 
 function main(){

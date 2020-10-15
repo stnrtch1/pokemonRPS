@@ -5,7 +5,11 @@
     border: solid 2px black;
     text-align: center;
     margin-top: 15px;
-    color:$color
+    color:$color;
+
+    &:disabled{
+        cursor: not-allowed; 
+    }
 }
 
 @mixin typeColor($color,$hover){
