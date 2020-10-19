@@ -24,6 +24,7 @@ let btnSelectedTypeTwo;
 let btnConfirm;
 
 //type array
+let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
 let selectedTypeArray = [];
 
 //--------------------------------------------------------------PRIVATE FUNCTIONS
@@ -145,6 +146,24 @@ function removeType($index){
 function onConfirmTypes(){
     console.log("Types locked in");
     console.log("Types: " + selectedTypeArray);
+
+    //This function takes the types from the selectedTypes array and puts them into the move buttons for the battle screen
+    let moveSet = document.getElementsByClassName("move");
+    for (let i = 0; i < 5; i++){
+        if(selectedTypeArray[i] != undefined){
+            //if there is a value in the selectedType Array, add it to a button
+            moveSet[i].innerHTML = selectedTypeArray[i];
+            moveSet[i].classList.add("move--"+selectedTypeArray[i]);
+            //remove the type from the full types array so it doesn't get selected again
+            let typeIndex = typeArray.indexOf(selectedTypeArray[i]);
+            typeArray.splice(typeIndex,1);
+        }else{
+            moveSet[i].innerHTML = "Random";
+            moveSet[i].classList.add("move--Normal");
+        }
+    }
+
+    console.log(typeArray);
 }
 
 function main(){
