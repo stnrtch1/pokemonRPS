@@ -578,5 +578,7 @@ body {
           cursor: not-allowed;
           background-color: #9B6470;
           color: #CCCCCC; }
+  .battlezone .textbox {
+    margin-top: 15px; }
 
 /*# sourceMappingURL=styles.css.map */

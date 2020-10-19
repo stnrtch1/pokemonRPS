@@ -23,6 +23,12 @@ let btnSelectedTypeTwo;
 
 let btnConfirm;
 
+let btnMove1;
+let btnMove2;
+let btnMove3;
+let btnMove4;
+let btnMove5;
+
 //type arrays
 let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
 let selectedTypeArray = [];
@@ -181,6 +187,14 @@ function onConfirmTypes(){
     console.log(tempTypeArray);
 }
 
+function onAttack($moveIndex){
+    console.log("Move Index Used: " + $moveIndex);
+    let typeUsed = document.getElementById("move"+$moveIndex);
+    console.log("Move Type Used: " + typeUsed.innerHTML);
+
+
+}
+
 function main(){
     //initialize event listeners
     btnSelectedTypeOne = document.getElementsByClassName("selected__type")[0];
@@ -207,6 +221,12 @@ function main(){
 
     btnConfirm = document.getElementsByClassName("confirm__button")[0];
 
+    btnMove1 = document.getElementById("move1");
+    btnMove2 = document.getElementById("move2");
+    btnMove3 = document.getElementById("move3");
+    btnMove4 = document.getElementById("move4");
+    btnMove5 = document.getElementById("move5");
+
     btnSelectedTypeOne.addEventListener("click", () =>{removeType(0);});
     btnSelectedTypeTwo.addEventListener("click", () =>{removeType(1);});
 
@@ -230,6 +250,12 @@ function main(){
     btnFairy.addEventListener("click", () => {addType("Fairy");});
 
     btnConfirm.addEventListener("click", onConfirmTypes);
+
+    btnMove1.addEventListener("click", () => {onAttack(1);});
+    btnMove2.addEventListener("click", () => {onAttack(2);});
+    btnMove3.addEventListener("click", () => {onAttack(3);});
+    btnMove4.addEventListener("click", () => {onAttack(4);});
+    btnMove5.addEventListener("click", () => {onAttack(5);});
     
     console.log("Wassup? I'm here.");
 }
