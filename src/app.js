@@ -23,9 +23,17 @@ let btnSelectedTypeTwo;
 
 let btnConfirm;
 
-//type array
+//type arrays
 let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
 let selectedTypeArray = [];
+let enemyTypes = [];
+
+//counters
+let turnCount = 1;
+let playerHealth = 200;
+let playerMaxHealth = 200;
+let aiHealth = 200;
+let aiMaxHealth = 200;
 
 //--------------------------------------------------------------PRIVATE FUNCTIONS
 function enableTypes($type,$mode){
@@ -146,7 +154,7 @@ function removeType($index){
 function onConfirmTypes(){
     console.log("Types locked in");
     console.log("Types: " + selectedTypeArray);
-
+    let tempTypeArray = [...typeArray];
     //This function takes the types from the selectedTypes array and puts them into the move buttons for the battle screen
     let moveSet = document.getElementsByClassName("move");
     for (let i = 0; i < 5; i++){
@@ -155,21 +163,21 @@ function onConfirmTypes(){
             moveSet[i].innerHTML = selectedTypeArray[i];
             moveSet[i].classList.add("move--"+selectedTypeArray[i]);
             //remove the type from the full types array so it doesn't get selected again
-            let typeIndex = typeArray.indexOf(selectedTypeArray[i]);
-            typeArray.splice(typeIndex,1);
+            let typeIndex = tempTypeArray.indexOf(selectedTypeArray[i]);
+            tempTypeArray.splice(typeIndex,1);
         }else{
             //with no more array types, the rest of the moves will be randomized
-            let typeCount = typeArray.length;
+            let typeCount = tempTypeArray.length;
             let typeIndex =  Math.floor(Math.random() * (typeCount));
-            let type = typeArray[typeIndex];
+            let type = tempTypeArray[typeIndex];
             moveSet[i].innerHTML = type;
             moveSet[i].classList.add("move--"+type);
             //remove the type from the typeArray so it doesn't get picked again
-            typeArray.splice(typeIndex,1);
+            tempTypeArray.splice(typeIndex,1);
         }
     }
 
-    console.log(typeArray);
+    console.log(tempTypeArray);
 }
 
 function main(){
