@@ -33,7 +33,7 @@ body{
 }
 
 .main{
-
+    margin: 10px 0px 0px 10px;
 }
 
 .header{
@@ -230,4 +230,99 @@ body{
         }
         
     }
+}
+
+.battlezone{
+
+    .healthsets{
+        width: 650px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    .moves{
+        width: 650px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+
+        .move{
+            @include typeContainer(white);
+
+            &--Normal{
+                @include typeColor(#A8A878,#6D6D4E);
+            }
+
+            &--Fighting{
+                @include typeColor(#C03028,#7D1F1A);
+            }
+
+            &--Flying{
+                @include typeColor(#A890F0,#6D5E9C);
+            }
+
+            &--Poison{
+                @include typeColor(#A040A0,#682A68);
+            }
+
+            &--Ground{
+                @include typeColor(#E0C068,#927D44);
+            }
+
+            &--Rock{
+                @include typeColor(#B8A038,#786824);
+            }
+
+            &--Bug{
+                @include typeColor(#A8B820,#6D7815);
+            }
+
+            &--Ghost{
+                @include typeColor(#705898,#493963);
+            }
+
+            &--Steel{
+                @include typeColor(#B8B8D0,#787887);
+            }
+
+            &--Fire{
+                @include typeColor(#F08030,#9C531F);
+            }
+
+            &--Water{
+                @include typeColor(#6890F0,#445E9C);
+            }
+
+            &--Grass{
+                @include typeColor(#78C850,#4E8234);
+            }
+
+            &--Electric{
+                @include typeColor(#F8D030,#A1871F);
+            }
+
+            &--Psychic{
+                @include typeColor(#F85888,#A13959);
+            }
+
+            &--Ice{
+                @include typeColor(#98D8D8,#638D8D);
+            }
+
+            &--Dragon{
+                @include typeColor(#7038F8,#4924A1);
+            }
+
+            &--Dark{
+                @include typeColor(#705848,#49392F);
+            }
+
+            &--Fairy{
+                @include typeColor(#EE99AC,#9B6470);
+            }
+        }
+
+    }
+
 }

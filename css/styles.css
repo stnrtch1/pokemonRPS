@@ -2,6 +2,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px; }
 
+.main {
+  margin: 10px 0px 0px 10px; }
+
 .header {
   font-size: 30px;
   font-weight: bold; }
@@ -377,5 +380,189 @@ body {
     text-align: center;
     margin-top: 15px;
     font-size: 20px; }
+
+.battlezone .healthsets {
+  width: 650px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between; }
+
+.battlezone .moves {
+  width: 650px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around; }
+  .battlezone .moves .move {
+    width: 100px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: solid 2px black;
+    text-align: center;
+    margin-top: 15px;
+    color: white; }
+    .battlezone .moves .move:disabled {
+      cursor: not-allowed; }
+    .battlezone .moves .move--Normal {
+      background-color: #A8A878; }
+      .battlezone .moves .move--Normal:hover {
+        cursor: pointer;
+        background-color: #6D6D4E; }
+      .battlezone .moves .move--Normal:disabled {
+        cursor: not-allowed;
+        background-color: #6D6D4E;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Fighting {
+      background-color: #C03028; }
+      .battlezone .moves .move--Fighting:hover {
+        cursor: pointer;
+        background-color: #7D1F1A; }
+      .battlezone .moves .move--Fighting:disabled {
+        cursor: not-allowed;
+        background-color: #7D1F1A;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Flying {
+      background-color: #A890F0; }
+      .battlezone .moves .move--Flying:hover {
+        cursor: pointer;
+        background-color: #6D5E9C; }
+      .battlezone .moves .move--Flying:disabled {
+        cursor: not-allowed;
+        background-color: #6D5E9C;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Poison {
+      background-color: #A040A0; }
+      .battlezone .moves .move--Poison:hover {
+        cursor: pointer;
+        background-color: #682A68; }
+      .battlezone .moves .move--Poison:disabled {
+        cursor: not-allowed;
+        background-color: #682A68;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Ground {
+      background-color: #E0C068; }
+      .battlezone .moves .move--Ground:hover {
+        cursor: pointer;
+        background-color: #927D44; }
+      .battlezone .moves .move--Ground:disabled {
+        cursor: not-allowed;
+        background-color: #927D44;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Rock {
+      background-color: #B8A038; }
+      .battlezone .moves .move--Rock:hover {
+        cursor: pointer;
+        background-color: #786824; }
+      .battlezone .moves .move--Rock:disabled {
+        cursor: not-allowed;
+        background-color: #786824;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Bug {
+      background-color: #A8B820; }
+      .battlezone .moves .move--Bug:hover {
+        cursor: pointer;
+        background-color: #6D7815; }
+      .battlezone .moves .move--Bug:disabled {
+        cursor: not-allowed;
+        background-color: #6D7815;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Ghost {
+      background-color: #705898; }
+      .battlezone .moves .move--Ghost:hover {
+        cursor: pointer;
+        background-color: #493963; }
+      .battlezone .moves .move--Ghost:disabled {
+        cursor: not-allowed;
+        background-color: #493963;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Steel {
+      background-color: #B8B8D0; }
+      .battlezone .moves .move--Steel:hover {
+        cursor: pointer;
+        background-color: #787887; }
+      .battlezone .moves .move--Steel:disabled {
+        cursor: not-allowed;
+        background-color: #787887;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Fire {
+      background-color: #F08030; }
+      .battlezone .moves .move--Fire:hover {
+        cursor: pointer;
+        background-color: #9C531F; }
+      .battlezone .moves .move--Fire:disabled {
+        cursor: not-allowed;
+        background-color: #9C531F;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Water {
+      background-color: #6890F0; }
+      .battlezone .moves .move--Water:hover {
+        cursor: pointer;
+        background-color: #445E9C; }
+      .battlezone .moves .move--Water:disabled {
+        cursor: not-allowed;
+        background-color: #445E9C;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Grass {
+      background-color: #78C850; }
+      .battlezone .moves .move--Grass:hover {
+        cursor: pointer;
+        background-color: #4E8234; }
+      .battlezone .moves .move--Grass:disabled {
+        cursor: not-allowed;
+        background-color: #4E8234;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Electric {
+      background-color: #F8D030; }
+      .battlezone .moves .move--Electric:hover {
+        cursor: pointer;
+        background-color: #A1871F; }
+      .battlezone .moves .move--Electric:disabled {
+        cursor: not-allowed;
+        background-color: #A1871F;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Psychic {
+      background-color: #F85888; }
+      .battlezone .moves .move--Psychic:hover {
+        cursor: pointer;
+        background-color: #A13959; }
+      .battlezone .moves .move--Psychic:disabled {
+        cursor: not-allowed;
+        background-color: #A13959;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Ice {
+      background-color: #98D8D8; }
+      .battlezone .moves .move--Ice:hover {
+        cursor: pointer;
+        background-color: #638D8D; }
+      .battlezone .moves .move--Ice:disabled {
+        cursor: not-allowed;
+        background-color: #638D8D;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Dragon {
+      background-color: #7038F8; }
+      .battlezone .moves .move--Dragon:hover {
+        cursor: pointer;
+        background-color: #4924A1; }
+      .battlezone .moves .move--Dragon:disabled {
+        cursor: not-allowed;
+        background-color: #4924A1;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Dark {
+      background-color: #705848; }
+      .battlezone .moves .move--Dark:hover {
+        cursor: pointer;
+        background-color: #49392F; }
+      .battlezone .moves .move--Dark:disabled {
+        cursor: not-allowed;
+        background-color: #49392F;
+        color: #CCCCCC; }
+    .battlezone .moves .move--Fairy {
+      background-color: #EE99AC; }
+      .battlezone .moves .move--Fairy:hover {
+        cursor: pointer;
+        background-color: #9B6470; }
+      .battlezone .moves .move--Fairy:disabled {
+        cursor: not-allowed;
+        background-color: #9B6470;
+        color: #CCCCCC; }
 
 /*# sourceMappingURL=styles.css.map */
