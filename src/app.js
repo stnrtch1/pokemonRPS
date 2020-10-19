@@ -30,6 +30,7 @@ let enemyTypes = [];
 
 //counters
 let turnCount = 1;
+let maxTurns = 3;
 let playerHealth = 200;
 let playerMaxHealth = 200;
 let aiHealth = 200;

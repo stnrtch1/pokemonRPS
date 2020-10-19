@@ -243,6 +243,18 @@ body{
 }
 
 .battlezone{
+    margin-top: 15px;
+
+    .turncount{
+        width: 650px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+
+        & > *{
+            margin: 0 5px;
+        }
+    }
 
     .healthsets{
         width: 650px;
