@@ -1,0 +1,9 @@
+Base	2x	4x	0.5x	0.25x |	Stab	2x	4x	0.5x	0.25x
+10	    20	40	5	    2.5   |	15	    30	60	7.5	    3.75
+
+20	    40	80	10	    5     |	30	    60	120	15	    7.5
+
+40	    80	160	20	    10    |	60	    120	240	30	    15
+
+Base HP should be able to withstand two STAB attacks regardless of effectiveness
+Around 500HP should be good if the base attack damage is 40 HP

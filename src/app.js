@@ -37,10 +37,10 @@ let enemyTypes = [];
 //counters
 let turnCount = 1;
 let maxTurns = 3;
-let playerHealth = 200;
-let playerMaxHealth = 200;
-let aiHealth = 200;
-let aiMaxHealth = 200;
+let playerHealth = 500;
+let playerMaxHealth = 500;
+let aiHealth = 500;
+let aiMaxHealth = 500;
 
 //--------------------------------------------------------------PRIVATE FUNCTIONS
 function enableTypes($type,$mode){
@@ -188,11 +188,18 @@ function onConfirmTypes(){
 }
 
 function onAttack($moveIndex){
+    //TO DO
+    /*
+        - Move Button is disabled after use
+        - System runs a type check to see how the selected move stacks up
+        - Reports the result in the text box
+        - AI Attack happens afterwards
+        - That is then reported in the text box
+        - Turn counter increments and then player attacks again 
+    */
     console.log("Move Index Used: " + $moveIndex);
     let typeUsed = document.getElementById("move"+$moveIndex);
     console.log("Move Type Used: " + typeUsed.innerHTML);
-
-
 }
 
 function main(){
