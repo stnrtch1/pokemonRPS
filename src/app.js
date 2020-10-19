@@ -158,8 +158,14 @@ function onConfirmTypes(){
             let typeIndex = typeArray.indexOf(selectedTypeArray[i]);
             typeArray.splice(typeIndex,1);
         }else{
-            moveSet[i].innerHTML = "Random";
-            moveSet[i].classList.add("move--Normal");
+            //with no more array types, the rest of the moves will be randomized
+            let typeCount = typeArray.length;
+            let typeIndex =  Math.floor(Math.random() * (typeCount));
+            let type = typeArray[typeIndex];
+            moveSet[i].innerHTML = type;
+            moveSet[i].classList.add("move--"+type);
+            //remove the type from the typeArray so it doesn't get picked again
+            typeArray.splice(typeIndex,1);
         }
     }
 
