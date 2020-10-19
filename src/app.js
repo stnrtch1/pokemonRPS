@@ -58,6 +58,7 @@ function addType($type){
             //add the type to the selected type array
             selectedTypeArray.push($type);
             btnSelectedTypeOne.disabled = false;
+            btnConfirm.disabled = false;
         } else if(selectedTypeArray.length == 1){
             //if one type is already selected, add this to the second section and disable the remaining buttons
             btnSelectedTypeTwo.innerHTML = $type;
@@ -120,6 +121,7 @@ function removeType($index){
             btnSelectedTypeOne.classList.remove("selected__type--"+ removeType);
             btnSelectedTypeOne.innerHTML = "?";
             btnSelectedTypeOne.disabled = true;
+            btnConfirm.disabled = true;
             //re-enable the removed type
             enableTypes(removeType,0);
         }
@@ -138,6 +140,11 @@ function removeType($index){
         enableTypes(type,1);
     }
 
+}
+
+function onConfirmTypes(){
+    console.log("Types locked in");
+    console.log("Types: " + selectedTypeArray);
 }
 
 function main(){
@@ -164,6 +171,11 @@ function main(){
     btnDark = document.getElementById("Dark");
     btnFairy = document.getElementById("Fairy");
 
+    btnConfirm = document.getElementsByClassName("confirm__button")[0];
+
+    btnSelectedTypeOne.addEventListener("click", () =>{removeType(0);});
+    btnSelectedTypeTwo.addEventListener("click", () =>{removeType(1);});
+
     btnNormal.addEventListener("click", () => {addType("Normal");});
     btnFighting.addEventListener("click", () => {addType("Fighting");});
     btnFlying.addEventListener("click", () => {addType("Flying");});
@@ -183,10 +195,8 @@ function main(){
     btnDark.addEventListener("click", () => {addType("Dark");});
     btnFairy.addEventListener("click", () => {addType("Fairy");});
 
-    btnSelectedTypeOne.addEventListener("click", () =>{removeType(0);});
-    btnSelectedTypeTwo.addEventListener("click", () =>{removeType(1);});
+    btnConfirm.addEventListener("click", onConfirmTypes);
     
-
     console.log("Wassup? I'm here.");
 }
 

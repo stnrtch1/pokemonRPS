@@ -380,6 +380,12 @@ body {
     text-align: center;
     margin-top: 15px;
     font-size: 20px; }
+    .selection__confirm .confirm__button:hover {
+      cursor: pointer;
+      background-color: #666666; }
+    .selection__confirm .confirm__button:disabled {
+      cursor: not-allowed;
+      background-color: #CCCCCC; }
 
 .battlezone .healthsets {
   width: 650px;
