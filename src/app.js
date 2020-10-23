@@ -29,10 +29,13 @@ let btnMove3;
 let btnMove4;
 let btnMove5;
 
+let txtTextbox;
+
 //type arrays
 let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
 let selectedTypeArray = [];
-let enemyTypes = [];
+//this is gonna be dummy data for testing
+let enemyTypes = ["Steel","Rock"];
 
 //counters
 let turnCount = 1;
@@ -41,6 +44,7 @@ let playerHealth = 500;
 let playerMaxHealth = 500;
 let aiHealth = 500;
 let aiMaxHealth = 500;
+let baseDamage = 40;
 
 //--------------------------------------------------------------PRIVATE FUNCTIONS
 function enableTypes($type,$mode){
@@ -61,6 +65,185 @@ function enableTypes($type,$mode){
         }
         
     }
+}
+
+function compareTypes($type){
+    //Take the move and compare it to what the enemy's types are
+    //first check if the opponent has one type or two
+    let enemyTypeCount = enemyTypes.length;
+    let damageMultiplier = [];
+    for (let i=0; i < enemyTypeCount; i++){
+        let enemyType = enemyTypes[i];
+        if($type=="Normal"){
+            if(enemyType=="Rock"||enemyType=="Steel"){
+                damageMultiplier.push(0.5);
+            }else if(enemyType=="Ghost"){
+                damageMultiplier.push(0);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Fighting"){
+            if(enemyType=="Normal"||enemyType=="Rock"||enemyType=="Steel"||enemyType=="Ice"||enemyType=="Dark"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Flying"||enemyType=="Poison"||enemyType=="Bug"||enemyType=="Psychic"||enemyType=="Fairy"){
+                damageMultiplier.push(0.5);
+            }else if(enemyType=="Ghost"){
+                damageMultiplier.push(0);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Flying"){
+            if(enemyType=="Fighting"||enemyType=="Steel"||enemyType=="Grass"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Rock"||enemyType=="Steel"||enemyType=="Electric"){
+                damageMultiplier.push(0.5);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Poison"){
+            if(enemyType=="Grass"||enemyType=="Fairy"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Poison"||enemyType=="Ground"||enemyType=="Rock"||enemyType=="Ghost"){
+                damageMultiplier.push(0.5);
+            }else if(enemyType=="Steel"){
+                damageMultiplier.push(0);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Ground"){
+            if(enemyType=="Poison"||enemyType=="Rock"||enemyType=="Steel"||enemyType=="Fire"||enemyType=="Electric"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Bug"||enemyType=="Grass"){
+                damageMultiplier.push(0.5);
+            }else if(enemyType=="Flying"){
+                damageMultiplier.push(0);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Rock"){
+            if(enemyType=="Flying"||enemyType=="Bug"||enemyType=="Fire"||enemyType=="Ice"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Fighting"||enemyType=="Ground"||enemyType=="Steel"){
+                damageMultiplier.push(0.5);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Bug"){
+            if(enemyType=="Grass"||enemyType=="Psychic"||enemyType=="Dark"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Fighting"||enemyType=="Flying"||enemyType=="Poison"||enemyType=="Ghost"||enemyType=="Steel"||enemyType=="Fire"||enemyType=="Fairy"){
+                damageMultiplier.push(0.5);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Ghost"){
+            if(enemyType=="Ghost"||enemyType=="Psychic"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Dark"){
+                damageMultiplier.push(0.5);
+            }else if(enemyType=="Normal"){
+                damageMultiplier.push(0);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Steel"){
+            if(enemyType=="Rock"||enemyType=="Ice"||enemyType=="Fairy"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Steel"||enemyType=="Fire"||enemyType=="Water"||enemyType=="Electric"){
+                damageMultiplier.push(0.5);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Fire"){
+            if(enemyType=="Bug"||enemyType=="Steel"||enemyType=="Grass"||enemyType=="Ice"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Rock"||enemyType=="Fire"||enemyType=="Water"||enemyType=="Dragon"){
+                damageMultiplier.push(0.5);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Water"){
+            if(enemyType=="Ground"||enemyType=="Rock"||enemyType=="Fire"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Water"||enemyType=="Grass"||enemyType=="Dragon"){
+                damageMultiplier.push(0.5);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Grass"){
+            if(enemyType=="Ground"||enemyType=="Rock"||enemyType=="Water"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Flying"||enemyType=="Poison"||enemyType=="Bug"||enemyType=="Steel"||enemyType=="Fire"||enemyType=="Grass"||enemyType=="Dragon"){
+                damageMultiplier.push(0.5);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Electric"){
+            if(enemyType=="Flying"||enemyType=="Water"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Grass"||enemyType=="Electric"||enemyType=="Dragon"){
+                damageMultiplier.push(0.5);
+            }else if(enemyType=="Ground"){
+                damageMultiplier.push(0);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Psychic"){
+            if(enemyType=="Fighting"||enemyType=="Poison"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Steel"||enemyType=="Psychic"){
+                damageMultiplier.push(0.5);
+            }else if(enemyType=="Dark"){
+                damageMultiplier.push(0);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Ice"){
+            if(enemyType=="Flying"||enemyType=="Ground"||enemyType=="Grass"||enemyType=="Dragon"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Steel"||enemyType=="Fire"||enemyType=="Water"||enemyType=="Ice"){
+                damageMultiplier.push(0.5);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Dragon"){
+            if(enemyType=="Dragon"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Steel"){
+                damageMultiplier.push(0.5);
+            }else if(enemyType=="Fairy"){
+                damageMultiplier.push(0);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Dark"){
+            if(enemyType=="Ghost"||enemyType=="Psychic"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Fighting"||enemyType=="Dark"||enemyType=="Fairy"){
+                damageMultiplier.push(0.5);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }else if($type=="Fairy"){
+            if(enemyType=="Fighting"||enemyType=="Dragon"||enemyType=="Dark"){
+                damageMultiplier.push(2);
+            }else if(enemyType=="Poison"||enemyType=="Steel"||enemyType=="Fire"){
+                damageMultiplier.push(0.5);
+            }else{
+                damageMultiplier.push(1);
+            }
+        }
+    }
+
+    //now multiply the base damage by the damage multipliers
+    let damageDone = baseDamage;
+    for(let i = 0;i<damageMultiplier.length;i++){
+        damageDone = damageDone * damageMultiplier[i];
+    }
+
+    txtTextbox.innerHTML += "It did " + damageDone + " damage!<br>";
+
+
 }
 
 //--------------------------------------------------------------EVENT LISTENERS
@@ -102,16 +285,6 @@ function addType($type){
 
 //remove type function
 function removeType($index){
-    /*TODO
-        Removing a type:
-        - Remove the type from the selectedTypeArray
-        - Re-enable the type button from the type selection
-        - Clear the selected type button
-        Removing a type when there are two selected:
-        - If first type is removed, move the second type to the first button
-        - Regardless of type removed, all unused buttons need to turn back on
-    
-    */
     if($index == 0){
         console.log("First Type Removed");
         //what happens with the first type removed, changes depending if there is one or two types selected
@@ -199,7 +372,12 @@ function onAttack($moveIndex){
     */
     console.log("Move Index Used: " + $moveIndex);
     let typeUsed = document.getElementById("move"+$moveIndex);
-    console.log("Move Type Used: " + typeUsed.innerHTML);
+    let typeText = typeUsed.innerHTML;
+    console.log("Move Type Used: " + typeText);
+    txtTextbox.innerHTML += "You used " + typeText + "! <br>";
+
+    compareTypes(typeText);
+
 }
 
 function main(){
@@ -233,6 +411,8 @@ function main(){
     btnMove3 = document.getElementById("move3");
     btnMove4 = document.getElementById("move4");
     btnMove5 = document.getElementById("move5");
+
+    txtTextbox = document.getElementsByClassName("textbox")[0];
 
     btnSelectedTypeOne.addEventListener("click", () =>{removeType(0);});
     btnSelectedTypeTwo.addEventListener("click", () =>{removeType(1);});

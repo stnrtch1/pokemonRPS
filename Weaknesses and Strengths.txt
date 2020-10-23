@@ -1,0 +1,79 @@
+Normal:
+-Not Very Effective: Rock, Steel
+-No Effect: Ghost
+
+Fighting:
+-Super Effective: Normal, Rock, Steel, Ice, Dark
+-Not Very Effective: Flying, Poison, Bug, Psychic, Fairy
+-No Effect: Ghost
+
+Flying:
+-Super Effective: Fighting, Bug, Grass
+-Not Very Effective: Rock, Steel, Electric
+
+Poison:
+-Super Effective: Grass, Fairy
+-Not Very Effective: Poison, Ground, Rock, Ghost
+-No Effect: Steel
+
+Ground:
+-Super Effective: Poison, Rock, Steel, Fire, Electric
+-Not Very Effective: Bug, Grass
+-No Effect: Flying
+
+Rock:
+-Super Effective: Flying, Bug, Fire, Ice
+-Not Very Effective: Fighting, Ground, Steel
+
+Bug:
+-Super Effective: Grass, Psychic, Dark
+-Not Very Effective: Fighting, Flying, Poison, Ghost, Steel, Fire, Fairy
+
+Ghost:
+-Super Effective: Ghost, Psychic
+-Not Very Effective: Dark
+-No Effect: Normal
+
+Steel:
+-Super Effective: Rock, Ice, Fairy
+-Not Very Effective: Steel, Fire, Water, Electric
+
+Fire:
+-Super Effective: Bug, Steel, Grass, Ice
+-Not Very Effective: Rock, Fire, Water, Dragon
+
+Water:
+-Super Effective: Ground, Rock, Fire
+-Not Every Effective: Water, Grass, Dragon
+
+Grass:
+-Super Effective: Ground, Rock, Water
+-Not Very Effective: Flying, Poison, Bug, Steel, Fire, Grass, Dragon
+
+Electric:
+-Super Effective: Flying, Water
+-Not Very Effective: Grass, Electric, Dragon
+-No Effect: Ground
+
+Psychic:
+-Super Effective: Fighting, Poison
+-Not Very Effective: Steel, Psychic
+-No Effect: Dark
+
+Ice:
+-Super Effective: Flying, Ground, Grass, Dragon
+-Not Very Effective: Steel, Fire, Water, Ice
+
+Dragon:
+-Super Effective: Dragon
+-Not Very Effective: Steel
+-No Effect: Fairy
+
+Dark:
+-Super Effective: Ghost, Psychic
+-Not Very Effective: Fighting, Dark, Fairy
+
+Fairy:
+-Super Effective: Fighting, Dragon, Dark
+-Not Very Effective: Poison, Steel, Fire
+
