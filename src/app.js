@@ -35,7 +35,7 @@ let txtTextbox;
 let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
 let selectedTypeArray = [];
 //this is gonna be dummy data for testing
-let enemyTypes = ["Steel","Rock"];
+let enemyTypes = [];
 
 //counters
 let turnCount = 1;
@@ -357,7 +357,22 @@ function onConfirmTypes(){
         }
     }
 
-    console.log(tempTypeArray);
+    //Now that the player's types are selected, let's select the types for the AI
+    let enemyTypeArray = [...typeArray];
+    //There will be a 50/50 chance that either the AI has one type or two
+    let enemyTypeCount = Math.floor(Math.random() * (2)) + 1;
+    console.log("Enemy Types: " + enemyTypeCount);
+    for (let i=0; i < enemyTypeCount;i++){
+        let typeCount = enemyTypeArray.length;
+        let typeIndex = Math.floor(Math.random() * typeCount);
+        let type = enemyTypeArray[typeIndex];
+        //with the type selected, push it into the enemy type array and then push it out of the full type pool
+        enemyTypes.push(type);
+        enemyTypeArray.splice(typeIndex,1);
+    }
+
+    console.log(enemyTypes);
+
 }
 
 function onAttack($moveIndex){
