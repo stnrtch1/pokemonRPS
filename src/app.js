@@ -34,8 +34,8 @@ let txtTextbox;
 //type arrays
 let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
 let selectedTypeArray = [];
-//this is gonna be dummy data for testing
 let enemyTypes = [];
+let enemyMoveTypes = [];
 
 //counters
 let turnCount = 1;
@@ -65,6 +65,27 @@ function enableTypes($type,$mode){
         }
         
     }
+}
+
+function giveAIMoveSet(){
+    //first, any types that the enemy has should be added to the moveset
+    let tempTypeArray = [...typeArray];
+    for (let i=0;i<enemyTypes.length;i++){
+        enemyMoveTypes.push(enemyTypes[i]);
+        let typeIndex = tempTypeArray.indexOf(enemyTypes[i]);
+        tempTypeArray.splice(typeIndex,1);
+    }
+
+    //now, give the rest of the moves
+    while (enemyMoveTypes.length != 5){
+        let typeCount = tempTypeArray.length;
+        let typeIndex = Math.floor(Math.random() * (typeCount));
+        let type = tempTypeArray[typeIndex];
+        enemyMoveTypes.push(type);
+        tempTypeArray.splice(typeIndex,1);
+    }
+
+    console.log(enemyMoveTypes);
 }
 
 function compareTypes($type){
@@ -328,7 +349,6 @@ function removeType($index){
         let type = btnSelectedTypeOne.innerHTML;
         enableTypes(type,1);
     }
-
 }
 
 function onConfirmTypes(){
@@ -373,6 +393,9 @@ function onConfirmTypes(){
 
     console.log(enemyTypes);
 
+    //now let's give the AI some moves to use
+    giveAIMoveSet();
+
 }
 
 function onAttack($moveIndex){
@@ -387,6 +410,7 @@ function onAttack($moveIndex){
     */
     console.log("Move Index Used: " + $moveIndex);
     let typeUsed = document.getElementById("move"+$moveIndex);
+    typeUsed.disabled = true;
     let typeText = typeUsed.innerHTML;
     console.log("Move Type Used: " + typeText);
     txtTextbox.innerHTML += "You used " + typeText + "! <br>";
