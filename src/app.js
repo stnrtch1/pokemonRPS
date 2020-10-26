@@ -88,13 +88,26 @@ function giveAIMoveSet(){
     console.log(enemyMoveTypes);
 }
 
-function compareTypes($type){
+function compareTypes($type,$mode){
+    /*
+        MODE INDEX:
+        0: The types being compared belong to the AI
+        1: The types being compared belong to the Player
+    */
+
     //Take the move and compare it to what the enemy's types are
     //first check if the opponent has one type or two
-    let enemyTypeCount = enemyTypes.length;
+    let defendingTypes = [];
+    if($mode == 0){
+        defendingTypes = [...enemyTypes];
+    }else if($mode == 1){
+        defendingTypes = [...selectedTypeArray];
+    }
+
+    let enemyTypeCount = defendingTypes.length;
     let damageMultiplier = [];
     for (let i=0; i < enemyTypeCount; i++){
-        let enemyType = enemyTypes[i];
+        let enemyType = defendingTypes[i];
         if($type=="Normal"){
             if(enemyType=="Rock"||enemyType=="Steel"){
                 damageMultiplier.push(0.5);
@@ -267,6 +280,20 @@ function compareTypes($type){
 
 }
 
+function aiAttack(){
+    //pick a random move for the ai to use
+    let moveCount = enemyMoveTypes.length;
+    let moveIndex = Math.floor(Math.random() * moveCount);
+    let selectedMove = enemyMoveTypes[moveIndex];
+
+    txtTextbox.innerHTML += "AI used " + selectedMove + "! <br>";
+    //now compare the move to the player's type(s)
+    compareTypes(selectedMove,1);
+
+    //remove the move from the movelist
+    enemyMoveTypes.splice(moveIndex,1);
+}
+
 //--------------------------------------------------------------EVENT LISTENERS
 //add type function
 function addType($type){
@@ -415,7 +442,8 @@ function onAttack($moveIndex){
     console.log("Move Type Used: " + typeText);
     txtTextbox.innerHTML += "You used " + typeText + "! <br>";
 
-    compareTypes(typeText);
+    compareTypes(typeText,0);
+    aiAttack();
 
 }
 
