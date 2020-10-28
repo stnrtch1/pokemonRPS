@@ -1,3 +1,11 @@
+//TO DO
+/*
+    - Add text to compareTypes function to tell if moves are stronger/weaker (extremely not effective, not very effective, super effective, extremely effective)
+    - If Turn count is higher than the max turn count then go back to the menu and select types again
+    - Need to distinguish when a game is continuing or is a new one
+    - Game is over when either the player's or AI's HP reaches 0
+*/
+
 //html elements
 let btnNormal;
 let btnFighting;
@@ -39,7 +47,7 @@ let txtAIMaxHealth;
 
 //type arrays
 let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
-let selectedTypeArray = [];
+let playerTypes = [];
 let enemyTypes = [];
 let enemyMoveTypes = [];
 
@@ -113,10 +121,13 @@ function compareTypes($type,$mode){
     //Take the move and compare it to what the enemy's types are
     //first check if the opponent has one type or two
     let defendingTypes = [];
+    let attackingTypes = [];
     if($mode == 0){
+        attackingTypes = [...playerTypes];
         defendingTypes = [...enemyTypes];
     }else if($mode == 1){
-        defendingTypes = [...selectedTypeArray];
+        attackingTypes = [...enemyTypes];
+        defendingTypes = [...playerTypes];
     }
 
     let enemyTypeCount = defendingTypes.length;
@@ -142,7 +153,7 @@ function compareTypes($type,$mode){
                 damageMultiplier.push(1);
             }
         }else if($type=="Flying"){
-            if(enemyType=="Fighting"||enemyType=="Steel"||enemyType=="Grass"){
+            if(enemyType=="Fighting"||enemyType=="Bug"||enemyType=="Grass"){
                 damageMultiplier.push(2);
             }else if(enemyType=="Rock"||enemyType=="Steel"||enemyType=="Electric"){
                 damageMultiplier.push(0.5);
@@ -284,8 +295,14 @@ function compareTypes($type,$mode){
         }
     }
 
-    //now multiply the base damage by the damage multipliers
+    
     let damageDone = baseDamage;
+    //check if the move is a STAB move
+    if(attackingTypes.includes($type)){
+        //if so, give it a 50% damage boost
+        damageDone = damageDone * 1.5;
+    }
+    //now multiply the base damage by the damage multipliers
     for(let i = 0;i<damageMultiplier.length;i++){
         damageDone = damageDone * damageMultiplier[i];
     }
@@ -320,21 +337,21 @@ function aiAttack(){
 //--------------------------------------------------------------EVENT LISTENERS
 //add type function
 function addType($type){
-    if(selectedTypeArray.length != 2){
-        if(selectedTypeArray.length == 0){
+    if(playerTypes.length != 2){
+        if(playerTypes.length == 0){
             //if no types are selected, add this type to the first section
             btnSelectedTypeOne.innerHTML = $type;
             btnSelectedTypeOne.classList.add("selected__type--" + $type);
             //add the type to the selected type array
-            selectedTypeArray.push($type);
+            playerTypes.push($type);
             btnSelectedTypeOne.disabled = false;
             btnConfirm.disabled = false;
-        } else if(selectedTypeArray.length == 1){
+        } else if(playerTypes.length == 1){
             //if one type is already selected, add this to the second section and disable the remaining buttons
             btnSelectedTypeTwo.innerHTML = $type;
             btnSelectedTypeTwo.classList.add("selected__type--" + $type);
             //add the type to the selected type array
-            selectedTypeArray.push($type);
+            playerTypes.push($type);
             btnSelectedTypeTwo.disabled = false;
             //Grab all unused buttons and disable them all when two types are selected
             let typeButtons = document.getElementsByClassName("select__type");
@@ -349,7 +366,7 @@ function addType($type){
         
         let selectedBtn = document.getElementById($type);
         selectedBtn.disabled = true;
-        console.log(selectedTypeArray);
+        console.log(playerTypes);
     }
     
 }
@@ -361,7 +378,7 @@ function removeType($index){
         //what happens with the first type removed, changes depending if there is one or two types selected
         //if there is one type, then you just clear the button and re-enable the type button
         //if there is two types, then you clear the old first type, then move the second type to the first button and re-enable all the other type buttons
-        if(selectedTypeArray.length > 1){
+        if(playerTypes.length > 1){
             //here if there is two types
             //replace the first button with the second
             let originalType = btnSelectedTypeOne.innerHTML;
@@ -385,11 +402,11 @@ function removeType($index){
             //re-enable the removed type
             enableTypes(removeType,0);
         }
-        selectedTypeArray.splice(0,1);
+        playerTypes.splice(0,1);
     }else if($index == 1){
         //removed the second type from the selected group
         console.log("Second Type Removed");
-        selectedTypeArray.splice(1,1);
+        playerTypes.splice(1,1);
         let removeType = btnSelectedTypeTwo.innerHTML;
         btnSelectedTypeTwo.classList.remove("selected__type--"+ removeType);
         btnSelectedTypeTwo.innerHTML = "?";
@@ -403,17 +420,17 @@ function removeType($index){
 
 function onConfirmTypes(){
     console.log("Types locked in");
-    console.log("Types: " + selectedTypeArray);
+    console.log("Types: " + playerTypes);
     let tempTypeArray = [...typeArray];
     //This function takes the types from the selectedTypes array and puts them into the move buttons for the battle screen
     let moveSet = document.getElementsByClassName("move");
     for (let i = 0; i < 5; i++){
-        if(selectedTypeArray[i] != undefined){
+        if(playerTypes[i] != undefined){
             //if there is a value in the selectedType Array, add it to a button
-            moveSet[i].innerHTML = selectedTypeArray[i];
-            moveSet[i].classList.add("move--"+selectedTypeArray[i]);
+            moveSet[i].innerHTML = playerTypes[i];
+            moveSet[i].classList.add("move--"+playerTypes[i]);
             //remove the type from the full types array so it doesn't get selected again
-            let typeIndex = tempTypeArray.indexOf(selectedTypeArray[i]);
+            let typeIndex = tempTypeArray.indexOf(playerTypes[i]);
             tempTypeArray.splice(typeIndex,1);
         }else{
             //with no more array types, the rest of the moves will be randomized
@@ -452,15 +469,6 @@ function onConfirmTypes(){
 }
 
 function onAttack($moveIndex){
-    //TO DO
-    /*
-        - Move Button is disabled after use
-        - System runs a type check to see how the selected move stacks up
-        - Reports the result in the text box
-        - AI Attack happens afterwards
-        - That is then reported in the text box
-        - Turn counter increments and then player attacks again 
-    */
     console.log("Move Index Used: " + $moveIndex);
     let typeUsed = document.getElementById("move"+$moveIndex);
     typeUsed.disabled = true;
