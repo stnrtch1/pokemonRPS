@@ -30,6 +30,12 @@ let btnMove4;
 let btnMove5;
 
 let txtTextbox;
+let txtTurnCount;
+let txtMaxTurns;
+let txtPlayerHealth;
+let txtPlayerMaxHealth;
+let txtAIHealth;
+let txtAIMaxHealth;
 
 //type arrays
 let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
@@ -47,6 +53,15 @@ let aiMaxHealth = 500;
 let baseDamage = 40;
 
 //--------------------------------------------------------------PRIVATE FUNCTIONS
+function setupGame(){
+    txtTurnCount.innerHTML = turnCount;
+    txtMaxTurns.innerHTML = maxTurns;
+    txtPlayerHealth.innerHTML = playerHealth;
+    txtPlayerMaxHealth.innerHTML = playerMaxHealth;
+    txtAIHealth.innerHTML = aiHealth;
+    txtAIMaxHealth.innerHTML = aiMaxHealth;
+}
+
 function enableTypes($type,$mode){
     //$type is the selected type
     //$mode decides what is done with the type:
@@ -277,6 +292,14 @@ function compareTypes($type,$mode){
 
     txtTextbox.innerHTML += "It did " + damageDone + " damage!<br>";
 
+    if($mode == 0){
+        aiHealth = aiHealth - damageDone;
+        txtAIHealth.innerHTML = aiHealth;
+    }else if($mode == 1){
+        playerHealth = playerHealth - damageDone;
+        txtPlayerHealth.innerHTML = playerHealth;
+    }
+
 
 }
 
@@ -423,6 +446,9 @@ function onConfirmTypes(){
     //now let's give the AI some moves to use
     giveAIMoveSet();
 
+    //setup the game counters
+    setupGame();
+
 }
 
 function onAttack($moveIndex){
@@ -445,9 +471,19 @@ function onAttack($moveIndex){
     compareTypes(typeText,0);
     aiAttack();
 
+    turnCount++;
+    txtTurnCount.innerHTML = turnCount;
+
 }
 
 function main(){
+    txtTurnCount = document.getElementById("turnCount");
+    txtMaxTurns = document.getElementById("maxTurns");
+    txtPlayerHealth = document.getElementById("playerHealth");
+    txtPlayerMaxHealth = document.getElementById("playerMaxHealth");
+    txtAIHealth = document.getElementById("aiHealth");
+    txtAIMaxHealth = document.getElementById("aiMaxHealth");
+
     //initialize event listeners
     btnSelectedTypeOne = document.getElementsByClassName("selected__type")[0];
     btnSelectedTypeTwo = document.getElementsByClassName("selected__type")[1];
