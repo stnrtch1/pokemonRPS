@@ -302,6 +302,22 @@ function compareTypes($type,$mode){
         //if so, give it a 50% damage boost
         damageDone = damageDone * 1.5;
     }
+    //if there is only one type being compared, set the second type damage multiplier to 1
+    if(damageMultiplier[1] == undefined){
+        damageMultiplier.push(1);
+    }
+    //add the text to tell how effective the move type is
+    if(damageMultiplier[0]*damageMultiplier[1] == 4){
+        txtTextbox.innerHTML += "It's extremely effective!<br>";
+    }else if(damageMultiplier[0]*damageMultiplier[1] == 2){
+        txtTextbox.innerHTML += "It's super effective!<br>";
+    }else if(damageMultiplier[0]*damageMultiplier[1] == 0.5){
+        txtTextbox.innerHTML += "It's not very effective...<br>";
+    }else if(damageMultiplier[0]*damageMultiplier[1] == 0.25){
+        txtTextbox.innerHTML += "It's extremely not effective...<br>";
+    }else if(damageMultiplier[0]*damageMultiplier[1] == 0){
+        txtTextbox.innerHTML += "It had no effect...<br>";
+    }
     //now multiply the base damage by the damage multipliers
     for(let i = 0;i<damageMultiplier.length;i++){
         damageDone = damageDone * damageMultiplier[i];
