@@ -1,8 +1,7 @@
 //TO DO
 /*
-    - If Turn count is higher than the max turn count then go back to the menu and select types again
-    - Need to distinguish when a game is continuing or is a new one
     - Game is over when either the player's or AI's HP reaches 0
+    - Disable all leftover buttons and enable a new game button
 */
 
 //html elements
@@ -344,18 +343,11 @@ function aiAttack(){
     txtTextbox.innerHTML += "AI used " + selectedMove + "! <br>";
     //now compare the move to the player's type(s)
     compareTypes(selectedMove,1);
-
     //remove the move from the movelist
     enemyMoveTypes.splice(moveIndex,1);
 }
 
 function roundReset(){
-    /*
-        TODO:
-        - Clear the Player and AI types and moves
-        - Re-enable the type selection buttons
-        - Reset turn counter and text field
-    */
     //clear the player and ai types
     playerTypes.length = 0;
     enemyTypes.length = 0;
@@ -543,18 +535,30 @@ function onAttack($moveIndex){
     txtTextbox.innerHTML += "You used " + typeText + "! <br>";
 
     compareTypes(typeText,0);
-    aiAttack();
-
-    turnCount++;
-    if(turnCount > 3){
-        //return the player to type selection screen
-        console.log("Round is over.");
-        roundReset();
+    
+    //check if the AI is out of HP
+    if(aiHealth <= 0){
+        //ai is at or below 0 hp, player wins the game
+        txtTextbox.innerHTML += "AI is out of HP. Player wins!";
     }else{
-        txtTurnCount.innerHTML = turnCount;
+        aiAttack();
+
+        if(playerHealth <= 0){
+            //player is at 0 or less HP, AI wins the game
+            txtTextbox.innerHTML += "Player is out of HP. AI wins!";
+        }else{
+            turnCount++;
+            if(turnCount > 3){
+                //return the player to type selection screen
+                console.log("Round is over.");
+                roundReset();
+            }else{
+                txtTurnCount.innerHTML = turnCount;
+            }
+        }
+        
     }
     
-
 }
 
 function main(){
