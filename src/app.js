@@ -1,6 +1,5 @@
 //TO DO
 /*
-    - Add text to compareTypes function to tell if moves are stronger/weaker (extremely not effective, not very effective, super effective, extremely effective)
     - If Turn count is higher than the max turn count then go back to the menu and select types again
     - Need to distinguish when a game is continuing or is a new one
     - Game is over when either the player's or AI's HP reaches 0
@@ -350,6 +349,52 @@ function aiAttack(){
     enemyMoveTypes.splice(moveIndex,1);
 }
 
+function roundReset(){
+    /*
+        TODO:
+        - Clear the Player and AI types and moves
+        - Re-enable the type selection buttons
+        - Reset turn counter and text field
+    */
+    //clear the player and ai types
+    playerTypes.length = 0;
+    enemyTypes.length = 0;
+    //now clear the movesets
+    enemyMoveTypes.length = 0;
+    let moveSet = document.getElementsByClassName("move");
+    let i = 0;
+    while(i!=moveSet.length){
+        let classText = moveSet[i].innerHTML;
+        moveSet[i].innerHTML = "?";
+        moveSet[i].classList.remove("move--"+classText);
+        moveSet[i].disabled = true;
+        i++;
+    }
+
+    //now lets re-enable all the type selection buttons
+    //first clear the selected type buttons
+    btnSelectedTypeOne.classList.remove("selected__type--"+btnSelectedTypeOne.innerHTML);
+    btnSelectedTypeOne.innerHTML = "?";
+    btnSelectedTypeOne.disabled = true;
+    if (btnSelectedTypeTwo.innerHTML != "?"){
+        btnSelectedTypeTwo.classList.remove("selected__type--"+btnSelectedTypeTwo.innerHTML);
+        btnSelectedTypeTwo.innerHTML = "?";
+        btnSelectedTypeTwo.disabled = true;
+    }
+
+    //now reactivate all type selection buttons
+    let typeButtons = document.getElementsByClassName("select__type");
+    for (let i = 0; i < typeButtons.length; i++){
+        typeButtons[i].disabled = false;
+    }
+
+    //reset the turn counter and clear the battle text
+    turnCount = 1;
+    txtTextbox.innerHTML = "";
+
+    
+}
+
 //--------------------------------------------------------------EVENT LISTENERS
 //add type function
 function addType($type){
@@ -437,6 +482,9 @@ function removeType($index){
 function onConfirmTypes(){
     console.log("Types locked in");
     console.log("Types: " + playerTypes);
+
+    btnConfirm.disabled = true;
+
     let tempTypeArray = [...typeArray];
     //This function takes the types from the selectedTypes array and puts them into the move buttons for the battle screen
     let moveSet = document.getElementsByClassName("move");
@@ -445,6 +493,7 @@ function onConfirmTypes(){
             //if there is a value in the selectedType Array, add it to a button
             moveSet[i].innerHTML = playerTypes[i];
             moveSet[i].classList.add("move--"+playerTypes[i]);
+            moveSet[i].disabled = false;
             //remove the type from the full types array so it doesn't get selected again
             let typeIndex = tempTypeArray.indexOf(playerTypes[i]);
             tempTypeArray.splice(typeIndex,1);
@@ -455,6 +504,7 @@ function onConfirmTypes(){
             let type = tempTypeArray[typeIndex];
             moveSet[i].innerHTML = type;
             moveSet[i].classList.add("move--"+type);
+            moveSet[i].disabled = false;
             //remove the type from the typeArray so it doesn't get picked again
             tempTypeArray.splice(typeIndex,1);
         }
@@ -496,7 +546,14 @@ function onAttack($moveIndex){
     aiAttack();
 
     turnCount++;
-    txtTurnCount.innerHTML = turnCount;
+    if(turnCount > 3){
+        //return the player to type selection screen
+        console.log("Round is over.");
+        roundReset();
+    }else{
+        txtTurnCount.innerHTML = turnCount;
+    }
+    
 
 }
 
