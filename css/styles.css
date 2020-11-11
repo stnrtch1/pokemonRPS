@@ -578,6 +578,24 @@ body {
           cursor: not-allowed;
           background-color: #9B6470;
           color: #CCCCCC; }
+  .battlezone .reset {
+    width: 650px;
+    display: flex; }
+    .battlezone .reset__button {
+      display: none;
+      width: 125px;
+      margin: 0 auto;
+      border-radius: 10px;
+      border: solid 2px black;
+      text-align: center;
+      margin-top: 15px;
+      font-size: 20px; }
+      .battlezone .reset__button:hover {
+        cursor: pointer;
+        background-color: #666666; }
+      .battlezone .reset__button:disabled {
+        cursor: not-allowed;
+        background-color: #CCCCCC; }
   .battlezone .textbox {
     margin-top: 15px; }
 

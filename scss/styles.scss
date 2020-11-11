@@ -347,6 +347,32 @@ body{
 
     }
 
+    .reset{
+        width: 650px;
+        display: flex;
+
+        &__button{
+            display: none;
+            width: 125px;
+            margin: 0 auto;
+            border-radius: 10px;
+            border: solid 2px black;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 20px;
+
+            &:hover{
+                cursor: pointer;
+                background-color: #666666;
+            }
+        
+            &:disabled{
+                cursor: not-allowed;
+                background-color: #CCCCCC;
+            }
+        }
+    }
+
     .textbox{
         margin-top: 15px;    
     }

@@ -28,6 +28,7 @@ let btnSelectedTypeOne;
 let btnSelectedTypeTwo;
 
 let btnConfirm;
+let btnNewGame;
 
 let btnMove1;
 let btnMove2;
@@ -387,6 +388,10 @@ function roundReset(){
     
 }
 
+function gameOver(){
+
+}
+
 //--------------------------------------------------------------EVENT LISTENERS
 //add type function
 function addType($type){
@@ -540,12 +545,14 @@ function onAttack($moveIndex){
     if(aiHealth <= 0){
         //ai is at or below 0 hp, player wins the game
         txtTextbox.innerHTML += "AI is out of HP. Player wins!";
+        btnNewGame.style.display = "Block";
     }else{
         aiAttack();
 
         if(playerHealth <= 0){
             //player is at 0 or less HP, AI wins the game
             txtTextbox.innerHTML += "Player is out of HP. AI wins!";
+            btnNewGame.style.display = "Block";
         }else{
             turnCount++;
             if(turnCount > 3){
@@ -593,6 +600,7 @@ function main(){
     btnFairy = document.getElementById("Fairy");
 
     btnConfirm = document.getElementsByClassName("confirm__button")[0];
+    btnNewGame = document.getElementsByClassName("reset__button")[0];
 
     btnMove1 = document.getElementById("move1");
     btnMove2 = document.getElementById("move2");
