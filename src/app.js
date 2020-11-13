@@ -580,7 +580,22 @@ function onAttack($moveIndex){
 }
 
 function onResetGame(){
-    
+    /*
+        On hitting New Game:
+        - HP and Turn Values need to be reset
+        - Moves need to be cleared
+        - Selected Types need to be cleared
+        - Enemy Moves and Types need to be cleared
+    */
+    //reset hp and turn counters
+    playerHealth = playerMaxHealth;
+    aiHealth = aiMaxHealth;
+
+    //clear the players moves
+    roundReset();
+
+    //hide the new game button when done
+    btnNewGame.style.display = "None";
 }
 
 function main(){
