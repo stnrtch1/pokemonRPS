@@ -389,7 +389,16 @@ function roundReset(){
 }
 
 function gameOver(){
-
+    //this function disables all leftover buttons
+    //get all move buttons and disable the ones that aren't disabled already
+    let moveSet = document.getElementsByClassName("move");
+    let i = 0;
+    while(i!=moveSet.length){
+        if(moveSet[i].disabled == false){
+            moveSet[i].disabled = true;
+        }
+        i++;
+    }
 }
 
 //--------------------------------------------------------------EVENT LISTENERS
@@ -546,6 +555,7 @@ function onAttack($moveIndex){
         //ai is at or below 0 hp, player wins the game
         txtTextbox.innerHTML += "AI is out of HP. Player wins!";
         btnNewGame.style.display = "Block";
+        gameOver();
     }else{
         aiAttack();
 
@@ -553,6 +563,7 @@ function onAttack($moveIndex){
             //player is at 0 or less HP, AI wins the game
             txtTextbox.innerHTML += "Player is out of HP. AI wins!";
             btnNewGame.style.display = "Block";
+            gameOver();
         }else{
             turnCount++;
             if(turnCount > 3){
@@ -565,6 +576,10 @@ function onAttack($moveIndex){
         }
         
     }
+    
+}
+
+function onResetGame(){
     
 }
 
@@ -633,6 +648,7 @@ function main(){
     btnFairy.addEventListener("click", () => {addType("Fairy");});
 
     btnConfirm.addEventListener("click", onConfirmTypes);
+    btnNewGame.addEventListener("click", onResetGame);
 
     btnMove1.addEventListener("click", () => {onAttack(1);});
     btnMove2.addEventListener("click", () => {onAttack(2);});
