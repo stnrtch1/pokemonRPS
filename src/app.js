@@ -1,7 +1,6 @@
 //TO DO
 /*
-    - Game is over when either the player's or AI's HP reaches 0
-    - Disable all leftover buttons and enable a new game button
+   
 */
 
 //html elements
@@ -28,6 +27,7 @@ let btnSelectedTypeOne;
 let btnSelectedTypeTwo;
 
 let btnConfirm;
+let btnNextRound;
 let btnNewGame;
 
 let btnMove1;
@@ -67,6 +67,14 @@ function setupGame(){
     txtPlayerMaxHealth.innerHTML = playerMaxHealth;
     txtAIHealth.innerHTML = aiHealth;
     txtAIMaxHealth.innerHTML = aiMaxHealth;
+}
+
+function sectionSwap(){
+    //both the type selection screen and battle screen aren't supposed to be on at the same time.
+    //Let's clutter the screen less by making only one active at a time.
+    //By default, the type selection screen is active first and when the player hits okay, then it swaps to the battle screen
+    //Once the battle screen hits the end of the third turn, then the player hits a button to go back to the type selection screen
+
 }
 
 function enableTypes($type,$mode){
@@ -579,14 +587,11 @@ function onAttack($moveIndex){
     
 }
 
+function onNextRound(){
+    
+}
+
 function onResetGame(){
-    /*
-        On hitting New Game:
-        - HP and Turn Values need to be reset
-        - Moves need to be cleared
-        - Selected Types need to be cleared
-        - Enemy Moves and Types need to be cleared
-    */
     //reset hp and turn counters
     playerHealth = playerMaxHealth;
     aiHealth = aiMaxHealth;
@@ -630,6 +635,7 @@ function main(){
     btnFairy = document.getElementById("Fairy");
 
     btnConfirm = document.getElementsByClassName("confirm__button")[0];
+    btnNextRound = document.getElementsByClassName("nextround__button")[0];
     btnNewGame = document.getElementsByClassName("reset__button")[0];
 
     btnMove1 = document.getElementById("move1");
@@ -663,6 +669,7 @@ function main(){
     btnFairy.addEventListener("click", () => {addType("Fairy");});
 
     btnConfirm.addEventListener("click", onConfirmTypes);
+    btnNextRound.addEventListener("click", onNextRound);
     btnNewGame.addEventListener("click", onResetGame);
 
     btnMove1.addEventListener("click", () => {onAttack(1);});

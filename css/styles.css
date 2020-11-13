@@ -578,10 +578,10 @@ body {
           cursor: not-allowed;
           background-color: #9B6470;
           color: #CCCCCC; }
-  .battlezone .reset {
+  .battlezone .reset, .battlezone .nextround {
     width: 650px;
     display: flex; }
-    .battlezone .reset__button {
+    .battlezone .reset__button, .battlezone .nextround__button {
       display: none;
       width: 125px;
       margin: 0 auto;
@@ -590,10 +590,10 @@ body {
       text-align: center;
       margin-top: 15px;
       font-size: 20px; }
-      .battlezone .reset__button:hover {
+      .battlezone .reset__button:hover, .battlezone .nextround__button:hover {
         cursor: pointer;
         background-color: #666666; }
-      .battlezone .reset__button:disabled {
+      .battlezone .reset__button:disabled, .battlezone .nextround__button:disabled {
         cursor: not-allowed;
         background-color: #CCCCCC; }
   .battlezone .textbox {
