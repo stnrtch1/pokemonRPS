@@ -367,7 +367,7 @@ function aiAttack(){
     enemyMoveTypes.splice(moveIndex,1);
 }
 
-function roundReset(){
+function clearMoves(){
     //clear the player and ai types
     playerTypes.length = 0;
     enemyTypes.length = 0;
@@ -403,11 +403,9 @@ function roundReset(){
     //reset the turn counter and clear the battle text
     turnCount = 1;
     txtTextbox.innerHTML = "";
-
-    
 }
 
-function gameOver(){
+function disableMoves(){
     //this function disables all leftover buttons
     //get all move buttons and disable the ones that aren't disabled already
     let moveSet = document.getElementsByClassName("move");
@@ -577,7 +575,7 @@ function onAttack($moveIndex){
         //ai is at or below 0 hp, player wins the game
         txtTextbox.innerHTML += "AI is out of HP. Player wins!";
         btnNewGame.style.display = "Block";
-        gameOver();
+        disableMoves();
     }else{
         aiAttack();
 
@@ -585,13 +583,15 @@ function onAttack($moveIndex){
             //player is at 0 or less HP, AI wins the game
             txtTextbox.innerHTML += "Player is out of HP. AI wins!";
             btnNewGame.style.display = "Block";
-            gameOver();
+            disableMoves();
         }else{
             turnCount++;
             if(turnCount > 3){
                 //return the player to type selection screen
                 console.log("Round is over.");
-                roundReset();
+                btnNextRound.style.display = "Block";
+                disableMoves();
+                //roundReset();
             }else{
                 txtTurnCount.innerHTML = turnCount;
             }
@@ -602,19 +602,30 @@ function onAttack($moveIndex){
 }
 
 function onNextRound(){
+    //clear the moves and types
+    clearMoves();
+
+    //hide the next round button
+    btnNextRound.style.display = "none";
+
+    //swap the game view
+    sectionSwap();
 
 }
 
-function onResetGame(){
+function onNewGame(){
     //reset hp and turn counters
     playerHealth = playerMaxHealth;
     aiHealth = aiMaxHealth;
 
     //clear the players moves
-    roundReset();
+    clearMoves();
 
     //hide the new game button when done
     btnNewGame.style.display = "None";
+
+    //swap the game view
+    sectionSwap();
 }
 
 function main(){
@@ -687,7 +698,7 @@ function main(){
 
     btnConfirm.addEventListener("click", onConfirmTypes);
     btnNextRound.addEventListener("click", onNextRound);
-    btnNewGame.addEventListener("click", onResetGame);
+    btnNewGame.addEventListener("click", onNewGame);
 
     btnMove1.addEventListener("click", () => {onAttack(1);});
     btnMove2.addEventListener("click", () => {onAttack(2);});
