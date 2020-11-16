@@ -388,6 +388,7 @@ body {
       background-color: #CCCCCC; }
 
 .battlezone {
+  display: none;
   margin-top: 15px; }
   .battlezone .turncount {
     width: 650px;

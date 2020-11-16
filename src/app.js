@@ -4,6 +4,9 @@
 */
 
 //html elements
+let divSelection;
+let divBattlezone;
+
 let btnNormal;
 let btnFighting;
 let btnFlying;
@@ -74,7 +77,15 @@ function sectionSwap(){
     //Let's clutter the screen less by making only one active at a time.
     //By default, the type selection screen is active first and when the player hits okay, then it swaps to the battle screen
     //Once the battle screen hits the end of the third turn, then the player hits a button to go back to the type selection screen
-
+    
+    //getComputedStyle gets the computed styles from the window and allows them to values to be checked
+    if(window.getComputedStyle(divSelection).display === "block"){
+        divSelection.style.display = "none";
+        divBattlezone.style.display = "block";
+    }else{
+        divSelection.style.display = "block";
+        divBattlezone.style.display = "none";
+    }
 }
 
 function enableTypes($type,$mode){
@@ -546,6 +557,9 @@ function onConfirmTypes(){
     //setup the game counters
     setupGame();
 
+    //swap the game view
+    sectionSwap();
+
 }
 
 function onAttack($moveIndex){
@@ -588,7 +602,7 @@ function onAttack($moveIndex){
 }
 
 function onNextRound(){
-    
+
 }
 
 function onResetGame(){
@@ -610,6 +624,9 @@ function main(){
     txtPlayerMaxHealth = document.getElementById("playerMaxHealth");
     txtAIHealth = document.getElementById("aiHealth");
     txtAIMaxHealth = document.getElementById("aiMaxHealth");
+
+    divSelection = document.getElementsByClassName("selection")[0];
+    divBattlezone = document.getElementsByClassName("battlezone")[0];
 
     //initialize event listeners
     btnSelectedTypeOne = document.getElementsByClassName("selected__type")[0];
