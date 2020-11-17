@@ -1,9 +1,5 @@
-//TO DO
-/*
-   
-*/
-
 //html elements
+let divHowToPlay;
 let divSelection;
 let divBattlezone;
 
@@ -29,6 +25,7 @@ let btnFairy;
 let btnSelectedTypeOne;
 let btnSelectedTypeTwo;
 
+let btnHowToPlay;
 let btnConfirm;
 let btnNextRound;
 let btnNewGame;
@@ -126,7 +123,7 @@ function giveAIMoveSet(){
         tempTypeArray.splice(typeIndex,1);
     }
 
-    console.log(enemyMoveTypes);
+    console.log("Enemy Moves: " + enemyMoveTypes);
 }
 
 function compareTypes($type,$mode){
@@ -450,7 +447,7 @@ function addType($type){
         
         let selectedBtn = document.getElementById($type);
         selectedBtn.disabled = true;
-        console.log(playerTypes);
+        //console.log(playerTypes);
     }
     
 }
@@ -458,7 +455,7 @@ function addType($type){
 //remove type function
 function removeType($index){
     if($index == 0){
-        console.log("First Type Removed");
+        //console.log("First Type Removed");
         //what happens with the first type removed, changes depending if there is one or two types selected
         //if there is one type, then you just clear the button and re-enable the type button
         //if there is two types, then you clear the old first type, then move the second type to the first button and re-enable all the other type buttons
@@ -489,7 +486,7 @@ function removeType($index){
         playerTypes.splice(0,1);
     }else if($index == 1){
         //removed the second type from the selected group
-        console.log("Second Type Removed");
+        //console.log("Second Type Removed");
         playerTypes.splice(1,1);
         let removeType = btnSelectedTypeTwo.innerHTML;
         btnSelectedTypeTwo.classList.remove("selected__type--"+ removeType);
@@ -502,9 +499,20 @@ function removeType($index){
     }
 }
 
+function onHowToPlay(){
+    //toggle the how to play section based on if it's showing or not
+    if(window.getComputedStyle(divHowToPlay).display === "none"){
+        divHowToPlay.style.display = "block";
+        btnHowToPlay.innerHTML = "Hide This Section";
+    }else{
+        divHowToPlay.style.display = "none";
+        btnHowToPlay.innerHTML = "How To Play";
+    }
+}
+
 function onConfirmTypes(){
-    console.log("Types locked in");
-    console.log("Types: " + playerTypes);
+    //console.log("Types locked in");
+    //console.log("Types: " + playerTypes);
 
     btnConfirm.disabled = true;
 
@@ -537,7 +545,7 @@ function onConfirmTypes(){
     let enemyTypeArray = [...typeArray];
     //There will be a 50/50 chance that either the AI has one type or two
     let enemyTypeCount = Math.floor(Math.random() * (2)) + 1;
-    console.log("Enemy Types: " + enemyTypeCount);
+    //console.log("Enemy Types: " + enemyTypeCount);
     for (let i=0; i < enemyTypeCount;i++){
         let typeCount = enemyTypeArray.length;
         let typeIndex = Math.floor(Math.random() * typeCount);
@@ -547,7 +555,7 @@ function onConfirmTypes(){
         enemyTypeArray.splice(typeIndex,1);
     }
 
-    console.log(enemyTypes);
+    console.log("Enemy Types: " + enemyTypes);
 
     //now let's give the AI some moves to use
     giveAIMoveSet();
@@ -561,11 +569,11 @@ function onConfirmTypes(){
 }
 
 function onAttack($moveIndex){
-    console.log("Move Index Used: " + $moveIndex);
+    //console.log("Move Index Used: " + $moveIndex);
     let typeUsed = document.getElementById("move"+$moveIndex);
     typeUsed.disabled = true;
     let typeText = typeUsed.innerHTML;
-    console.log("Move Type Used: " + typeText);
+    //console.log("Move Type Used: " + typeText);
     txtTextbox.innerHTML += "You used " + typeText + "! <br>";
 
     compareTypes(typeText,0);
@@ -636,6 +644,7 @@ function main(){
     txtAIHealth = document.getElementById("aiHealth");
     txtAIMaxHealth = document.getElementById("aiMaxHealth");
 
+    divHowToPlay = document.getElementsByClassName("howtoplay__text")[0];
     divSelection = document.getElementsByClassName("selection")[0];
     divBattlezone = document.getElementsByClassName("battlezone")[0];
 
@@ -662,6 +671,7 @@ function main(){
     btnDark = document.getElementById("Dark");
     btnFairy = document.getElementById("Fairy");
 
+    btnHowToPlay = document.getElementsByClassName("howtoplay__button")[0];
     btnConfirm = document.getElementsByClassName("confirm__button")[0];
     btnNextRound = document.getElementsByClassName("nextround__button")[0];
     btnNewGame = document.getElementsByClassName("reset__button")[0];
@@ -696,6 +706,7 @@ function main(){
     btnDark.addEventListener("click", () => {addType("Dark");});
     btnFairy.addEventListener("click", () => {addType("Fairy");});
 
+    btnHowToPlay.addEventListener("click", onHowToPlay);
     btnConfirm.addEventListener("click", onConfirmTypes);
     btnNextRound.addEventListener("click", onNextRound);
     btnNewGame.addEventListener("click", onNewGame);
@@ -706,7 +717,7 @@ function main(){
     btnMove4.addEventListener("click", () => {onAttack(4);});
     btnMove5.addEventListener("click", () => {onAttack(5);});
     
-    console.log("Wassup? I'm here.");
+    console.log("Cheating are you? Tsk tsk");
 }
 
 

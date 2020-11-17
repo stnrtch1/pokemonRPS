@@ -61,6 +61,29 @@ body{
     font-weight: bold; 
 }
 
+.howtoplay{
+    width: 650px;
+
+    &__button{
+        background: none;
+        border: none;
+        font-size: 20px;
+        margin: 10px 0;
+        padding: 0;
+        font-style: italic;
+
+        &:hover{
+            color: #0000ff;
+            cursor: pointer;
+        }
+    }
+
+    &__text{
+        display:none;
+        margin: 10px 0;
+    }
+}
+
 .selection{
     &__header{
         font-size: 30px;

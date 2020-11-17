@@ -9,6 +9,22 @@ body {
   font-size: 30px;
   font-weight: bold; }
 
+.howtoplay {
+  width: 650px; }
+  .howtoplay__button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin: 10px 0;
+    padding: 0;
+    font-style: italic; }
+    .howtoplay__button:hover {
+      color: #0000ff;
+      cursor: pointer; }
+  .howtoplay__text {
+    display: none;
+    margin: 10px 0; }
+
 .selection__header {
   font-size: 30px;
   font-weight: bold; }
