@@ -404,8 +404,10 @@ body {
       background-color: #CCCCCC; }
 
 .battlezone {
-  display: none;
-  margin-top: 15px; }
+  display: none; }
+  .battlezone__header {
+    font-size: 30px;
+    font-weight: bold; }
   .battlezone .turncount {
     width: 650px;
     display: flex;

@@ -413,6 +413,23 @@ function disableMoves(){
         }
         i++;
     }
+
+    //show what the opponent's types were once the round/game is over
+    if(enemyTypes.length == 1){
+        if (enemyTypes[0] == "Electric" || enemyTypes[0] == "Ice"){
+            //just for you people who want proper grammar
+            txtTextbox.innerHTML += "Your opponent was an " + enemyTypes[0] + " type that round.";
+        } else{
+            txtTextbox.innerHTML += "Your opponent was a " + enemyTypes[0] + " type that round.";
+        } 
+    }else{
+        if (enemyTypes[0] == "Electric" || enemyTypes[0] == "Ice"){
+            //just for you people who want proper grammar
+            txtTextbox.innerHTML += "Your opponent was an " + enemyTypes[0] + " and " + enemyTypes[1] + " type that round.";
+        } else{
+            txtTextbox.innerHTML += "Your opponent was a " + enemyTypes[0] + " and " + enemyTypes[1] + " type that round.";
+        } 
+    }
 }
 
 //--------------------------------------------------------------EVENT LISTENERS
@@ -581,7 +598,7 @@ function onAttack($moveIndex){
     //check if the AI is out of HP
     if(aiHealth <= 0){
         //ai is at or below 0 hp, player wins the game
-        txtTextbox.innerHTML += "AI is out of HP. Player wins!";
+        txtTextbox.innerHTML += "AI is out of HP. Player wins! <br>";
         btnNewGame.style.display = "Block";
         disableMoves();
     }else{
@@ -589,7 +606,7 @@ function onAttack($moveIndex){
 
         if(playerHealth <= 0){
             //player is at 0 or less HP, AI wins the game
-            txtTextbox.innerHTML += "Player is out of HP. AI wins!";
+            txtTextbox.innerHTML += "Player is out of HP. AI wins! <br>";
             btnNewGame.style.display = "Block";
             disableMoves();
         }else{

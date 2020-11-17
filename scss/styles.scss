@@ -271,7 +271,11 @@ body{
 
 .battlezone{
     display: none;
-    margin-top: 15px;
+
+    &__header{
+        font-size: 30px;
+        font-weight: bold;
+    }
 
     .turncount{
         width: 650px;
