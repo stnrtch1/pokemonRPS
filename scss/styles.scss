@@ -10,6 +10,15 @@
     &:disabled{
         cursor: not-allowed; 
     }
+
+    @media #{$large-phone}{
+        font-size: 18px;
+        width: 95px;
+    }
+
+    @media #{$phone}{
+        font-size: 16px;
+    }
 }
 
 @mixin typeColor($color,$hover){
@@ -45,11 +54,46 @@
         cursor: not-allowed;
         background-color: #CCCCCC;
     }
+
+    @media #{$large-phone}{
+        font-size: 18px;
+    }
+
+    @media #{$phone}{
+        font-size: 16px;
+    }
 }
+
+@mixin sectionHeader(){
+    font-size: 30px;
+    font-weight: bold; 
+
+    @media #{$large-phone}{
+        font-size: 26px;
+    }
+
+    @media #{$phone}{
+        font-size: 22px;
+    }
+}
+
+//sass variables
+$tablet: "screen and (max-width:768px)";
+$large-phone: "screen and (max-width:552px)";
+$phone: "screen and (max-width:320px)";
+
 
 body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+
+    @media #{$large-phone}{
+        font-size: 18px;
+    }
+
+    @media #{$phone}{
+        font-size: 16px;
+    }
 }
 
 .main{
@@ -57,8 +101,7 @@ body{
 }
 
 .header{
-    font-size: 30px;
-    font-weight: bold; 
+    @include sectionHeader();
 }
 
 .howtoplay{
@@ -76,6 +119,14 @@ body{
             color: #0000ff;
             cursor: pointer;
         }
+
+        @media #{$large-phone}{
+            font-size: 18px;
+        }
+    
+        @media #{$phone}{
+            font-size: 16px;
+        }
     }
 
     &__text{
@@ -86,8 +137,7 @@ body{
 
 .selection{
     &__header{
-        font-size: 30px;
-        font-weight: bold;
+        @include sectionHeader();
     }
 
     &__selectedTypes{
@@ -273,8 +323,7 @@ body{
     display: none;
 
     &__header{
-        font-size: 30px;
-        font-weight: bold;
+        @include sectionHeader();
     }
 
     .turncount{

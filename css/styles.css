@@ -1,6 +1,12 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px; }
+  @media screen and (max-width: 552px) {
+    body {
+      font-size: 18px; } }
+  @media screen and (max-width: 320px) {
+    body {
+      font-size: 16px; } }
 
 .main {
   margin: 10px 0px 0px 10px; }
@@ -8,6 +14,12 @@ body {
 .header {
   font-size: 30px;
   font-weight: bold; }
+  @media screen and (max-width: 552px) {
+    .header {
+      font-size: 26px; } }
+  @media screen and (max-width: 320px) {
+    .header {
+      font-size: 22px; } }
 
 .howtoplay {
   width: 650px; }
@@ -21,6 +33,12 @@ body {
     .howtoplay__button:hover {
       color: #0000ff;
       cursor: pointer; }
+    @media screen and (max-width: 552px) {
+      .howtoplay__button {
+        font-size: 18px; } }
+    @media screen and (max-width: 320px) {
+      .howtoplay__button {
+        font-size: 16px; } }
   .howtoplay__text {
     display: none;
     margin: 10px 0; }
@@ -28,6 +46,12 @@ body {
 .selection__header {
   font-size: 30px;
   font-weight: bold; }
+  @media screen and (max-width: 552px) {
+    .selection__header {
+      font-size: 26px; } }
+  @media screen and (max-width: 320px) {
+    .selection__header {
+      font-size: 22px; } }
 
 .selection__selectedTypes {
   display: flex;
@@ -44,6 +68,13 @@ body {
     color: black; }
     .selection__selectedTypes .selected__type:disabled {
       cursor: not-allowed; }
+    @media screen and (max-width: 552px) {
+      .selection__selectedTypes .selected__type {
+        font-size: 18px;
+        width: 95px; } }
+    @media screen and (max-width: 320px) {
+      .selection__selectedTypes .selected__type {
+        font-size: 16px; } }
     .selection__selectedTypes .selected__type--Normal {
       background-color: #A8A878; }
       .selection__selectedTypes .selected__type--Normal:hover {
@@ -222,6 +253,13 @@ body {
     color: white; }
     .selection__selectTypes .select__type:disabled {
       cursor: not-allowed; }
+    @media screen and (max-width: 552px) {
+      .selection__selectTypes .select__type {
+        font-size: 18px;
+        width: 95px; } }
+    @media screen and (max-width: 320px) {
+      .selection__selectTypes .select__type {
+        font-size: 16px; } }
     .selection__selectTypes .select__type--Normal {
       background-color: #A8A878; }
       .selection__selectTypes .select__type--Normal:hover {
@@ -402,12 +440,24 @@ body {
     .selection__confirm .confirm__button:disabled {
       cursor: not-allowed;
       background-color: #CCCCCC; }
+    @media screen and (max-width: 552px) {
+      .selection__confirm .confirm__button {
+        font-size: 18px; } }
+    @media screen and (max-width: 320px) {
+      .selection__confirm .confirm__button {
+        font-size: 16px; } }
 
 .battlezone {
   display: none; }
   .battlezone__header {
     font-size: 30px;
     font-weight: bold; }
+    @media screen and (max-width: 552px) {
+      .battlezone__header {
+        font-size: 26px; } }
+    @media screen and (max-width: 320px) {
+      .battlezone__header {
+        font-size: 22px; } }
   .battlezone .turncount {
     width: 650px;
     display: flex;
@@ -435,6 +485,13 @@ body {
       color: white; }
       .battlezone .moves .move:disabled {
         cursor: not-allowed; }
+      @media screen and (max-width: 552px) {
+        .battlezone .moves .move {
+          font-size: 18px;
+          width: 95px; } }
+      @media screen and (max-width: 320px) {
+        .battlezone .moves .move {
+          font-size: 16px; } }
       .battlezone .moves .move--Normal {
         background-color: #A8A878; }
         .battlezone .moves .move--Normal:hover {
@@ -615,6 +672,12 @@ body {
       .battlezone .reset__button:disabled, .battlezone .nextround__button:disabled {
         cursor: not-allowed;
         background-color: #CCCCCC; }
+      @media screen and (max-width: 552px) {
+        .battlezone .reset__button, .battlezone .nextround__button {
+          font-size: 18px; } }
+      @media screen and (max-width: 320px) {
+        .battlezone .reset__button, .battlezone .nextround__button {
+          font-size: 16px; } }
   .battlezone .textbox {
     margin-top: 15px; }
 
