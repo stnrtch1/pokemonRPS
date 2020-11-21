@@ -18,6 +18,7 @@
 
     @media #{$phone}{
         font-size: 16px;
+        width: 90px;
     }
 }
 
@@ -107,6 +108,10 @@ body{
 .howtoplay{
     width: 650px;
 
+    @media #{$tablet}{
+        width: 95%;
+    }
+
     &__button{
         background: none;
         border: none;
@@ -136,6 +141,12 @@ body{
 }
 
 .selection{
+    width:450px;
+
+    @media #{$large-phone}{
+        width: 95%;
+    }
+
     &__header{
         @include sectionHeader();
     }
@@ -144,7 +155,7 @@ body{
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
-        width:450px;
+        
 
         .selected__type{
             @include typeContainer(black);
@@ -228,7 +239,6 @@ body{
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
-        width: 450px;
 
 
         .select__type{
@@ -309,11 +319,18 @@ body{
     }
 
     &__confirm{
-        width: 450px;
         display: flex;
 
         .confirm__button{
             @include importantButton(100px);
+
+            @media #{$large-phone}{
+                @include importantButton(95px);
+            }
+        
+            @media #{$phone}{
+                @include importantButton(90px);
+            }
         }
         
     }
@@ -321,13 +338,17 @@ body{
 
 .battlezone{
     display: none;
+    width: 650px;
+
+    @media #{$tablet}{
+        width: 90%;
+    }
 
     &__header{
         @include sectionHeader();
     }
 
     .turncount{
-        width: 650px;
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -338,14 +359,12 @@ body{
     }
 
     .healthsets{
-        width: 650px;
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
     }
 
     .moves{
-        width: 650px;
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
@@ -432,10 +451,21 @@ body{
         width: 650px;
         display: flex;
 
+        @media #{$tablet}{
+            width: 100%;
+        }
+
         &__button{
             display: none;
             @include importantButton(125px);
             
+            @media #{$large-phone}{
+                @include importantButton(120px);
+            }
+        
+            @media #{$phone}{
+                @include importantButton(115px);
+            }
         }
     }
 
