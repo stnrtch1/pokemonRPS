@@ -1,8 +1,9 @@
 {
-  "name": "master-catalog-package",
+  "name": "austin-package",
   "version": "1.0.0",
   "description": "Node package mostly used for styling with gulp",
   "main": "index.js",
+  "type": "module",
   "devDependencies": {
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^4.0.2",
@@ -10,7 +11,9 @@
     "node-sass": "^4.11.0"
   },
   "dependencies": {
-    "gulp": "^4.0.0"
+    "babel": "^6.23.0",
+    "gulp": "^4.0.0",
+    "velocity-animate": "^2.0.6"
   },
   "author": "Austin Rtichie",
   "license": "ISC"
