@@ -1,3 +1,12 @@
+//import CookieManager from CookieManager file
+import {cookieManager} from "./CookieManager.js";
+
+//CookieManager object
+let cookieManagerObject = cookieManager;
+
+//json array that will be used for saving stuff into the cookie
+let jsonArray = [];
+
 //html elements
 let divHowToPlay;
 let divSelection;
@@ -58,6 +67,10 @@ let playerMaxHealth = 500;
 let aiHealth = 500;
 let aiMaxHealth = 500;
 let baseDamage = 40;
+
+//player stats
+let playerWins = 0;
+let aiWins = 0;
 
 //--------------------------------------------------------------PRIVATE FUNCTIONS
 function setupGame(){
@@ -430,6 +443,15 @@ function disableMoves(){
             txtTextbox.innerHTML += "Your opponent was a " + enemyTypes[0] + " and " + enemyTypes[1] + " type that round.";
         } 
     }
+}
+
+//SAVING AND LOADING COOKIE DATA
+function saveData(){
+
+}
+
+function loadData(){
+    
 }
 
 //--------------------------------------------------------------EVENT LISTENERS
