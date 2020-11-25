@@ -50,8 +50,10 @@ let txtTurnCount;
 let txtMaxTurns;
 let txtPlayerHealth;
 let txtPlayerMaxHealth;
+let txtPlayerWins;
 let txtAIHealth;
 let txtAIMaxHealth;
+let txtAIWins;
 
 //type arrays
 let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
@@ -446,12 +448,23 @@ function disableMoves(){
 }
 
 //SAVING AND LOADING COOKIE DATA
+function updateWins($winner){
+    if($winner == 0){
+        playerWins++;
+    }else if($winner == 1){
+        aiWins++;
+    }
+
+    txtPlayerWins.innerHTML = playerWins;
+    txtAIWins.innerHTML = aiWins;
+}
+
 function saveData(){
 
 }
 
 function loadData(){
-    
+
 }
 
 //--------------------------------------------------------------EVENT LISTENERS
@@ -623,6 +636,7 @@ function onAttack($moveIndex){
         txtTextbox.innerHTML += "AI is out of HP. Player wins! <br>";
         btnNewGame.style.display = "Block";
         disableMoves();
+        updateWins(0);
     }else{
         aiAttack();
 
@@ -631,6 +645,7 @@ function onAttack($moveIndex){
             txtTextbox.innerHTML += "Player is out of HP. AI wins! <br>";
             btnNewGame.style.display = "Block";
             disableMoves();
+            updateWins(1);
         }else{
             turnCount++;
             if(turnCount > 3){
@@ -680,8 +695,10 @@ function main(){
     txtMaxTurns = document.getElementById("maxTurns");
     txtPlayerHealth = document.getElementById("playerHealth");
     txtPlayerMaxHealth = document.getElementById("playerMaxHealth");
+    txtPlayerWins = document.getElementById("playerWins");
     txtAIHealth = document.getElementById("aiHealth");
     txtAIMaxHealth = document.getElementById("aiMaxHealth");
+    txtAIWins = document.getElementById("aiWins");
 
     divHowToPlay = document.getElementsByClassName("howtoplay__text")[0];
     divSelection = document.getElementsByClassName("selection")[0];
