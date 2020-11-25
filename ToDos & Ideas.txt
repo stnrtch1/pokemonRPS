@@ -1,5 +1,4 @@
 To-Dos:
-- Add mobile styling
 - Add more visuals to the app
 - Add customizeable HP, attack power and turn counters
 
@@ -8,3 +7,4 @@ Ideas:
 - Add a stat counters for various things, i.e. wins, loses, moves used/selected
 - Look into using a JSON file for handling the types
 - Make a game mode where there's a 50/50 chance on who goes first
+- Look into using VelocityJS or JQuery to make some animations for the app
