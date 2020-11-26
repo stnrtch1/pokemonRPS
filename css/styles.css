@@ -76,12 +76,14 @@ body {
     @media screen and (max-width: 320px) {
       .options__header {
         font-size: 22px; } }
-  .options__form .formset {
-    display: flex;
-    flex-flow: column wrap;
-    margin-top: 10px; }
-    .options__form .formset input[type=number] {
-      width: 100px; }
+  .options__form {
+    display: none; }
+    .options__form .formset {
+      display: flex;
+      flex-flow: column wrap;
+      margin-top: 10px; }
+      .options__form .formset input[type=number] {
+        width: 100px; }
   .options__confirm {
     display: flex;
     margin-top: 10px; }

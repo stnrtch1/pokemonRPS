@@ -9,6 +9,8 @@ let jsonArray;
 
 //html elements
 let divHowToPlay;
+let divOptions;
+let divGame;
 let divSelection;
 let divBattlezone;
 
@@ -35,6 +37,8 @@ let btnSelectedTypeOne;
 let btnSelectedTypeTwo;
 
 let btnHowToPlay;
+let btnOptions;
+let btnOptionsConfirm;
 let btnConfirm;
 let btnNextRound;
 let btnNewGame;
@@ -54,6 +58,10 @@ let txtPlayerWins;
 let txtAIHealth;
 let txtAIMaxHealth;
 let txtAIWins;
+
+let frmHealth;
+let frmAttack;
+let frmTurns;
 
 //type arrays
 let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
@@ -579,6 +587,14 @@ function onHowToPlay(){
     }
 }
 
+function onOptionsToggle(){
+
+}
+
+function onOptionsConfirm(){
+
+}
+
 function onConfirmTypes(){
     //console.log("Types locked in");
     //console.log("Types: " + playerTypes);
@@ -707,6 +723,8 @@ function onNewGame(){
     sectionSwap();
 }
 
+
+//--------------------------------------------------------------MAIN FUNCTION
 function main(){
     txtTurnCount = document.getElementById("turnCount");
     txtMaxTurns = document.getElementById("maxTurns");
@@ -728,10 +746,15 @@ function main(){
         loadData();
     }
 
-
     divHowToPlay = document.getElementsByClassName("howtoplay__text")[0];
+    divOptions = document.getElementsByClassName("options__form")[0];
+    divGame = document.getElementsByClassName("game")[0];
     divSelection = document.getElementsByClassName("selection")[0];
     divBattlezone = document.getElementsByClassName("battlezone")[0];
+
+    frmHealth = document.getElementById("frmHealth");
+    frmAttack = document.getElementById("frmAttack");
+    frmTurns = document.getElementById("frmTurns");
 
     //initialize event listeners
     btnSelectedTypeOne = document.getElementsByClassName("selected__type")[0];
@@ -757,6 +780,8 @@ function main(){
     btnFairy = document.getElementById("Fairy");
 
     btnHowToPlay = document.getElementsByClassName("howtoplay__button")[0];
+    btnOptions = document.getElementsByClassName("options__button")[0];
+    btnOptionsConfirm = document.getElementsByClassName("optionsForm__confirm")[0];
     btnConfirm = document.getElementsByClassName("confirm__button")[0];
     btnNextRound = document.getElementsByClassName("nextround__button")[0];
     btnNewGame = document.getElementsByClassName("reset__button")[0];
@@ -792,6 +817,8 @@ function main(){
     btnFairy.addEventListener("click", () => {addType("Fairy");});
 
     btnHowToPlay.addEventListener("click", onHowToPlay);
+    btnOptions.addEventListener("click", onOptionsToggle);
+    btnOptionsConfirm.addEventListener("click", onOptionsConfirm);
     btnConfirm.addEventListener("click", onConfirmTypes);
     btnNextRound.addEventListener("click", onNextRound);
     btnNewGame.addEventListener("click", onNewGame);
