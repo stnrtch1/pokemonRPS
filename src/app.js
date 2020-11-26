@@ -5,7 +5,7 @@ import {cookieManager} from "./CookieManager.js";
 let cookieManagerObject = cookieManager;
 
 //json array that will be used for saving stuff into the cookie
-let jsonArray = [];
+let jsonArray;
 
 //html elements
 let divHowToPlay;
@@ -457,14 +457,31 @@ function updateWins($winner){
 
     txtPlayerWins.innerHTML = playerWins;
     txtAIWins.innerHTML = aiWins;
+
+    saveData();
 }
 
 function saveData(){
-
+    //grab the wins and put it into an array
+    //then jsonify the array and send it to the cookie
+    let saveArray = [];
+    saveArray.push(playerWins,aiWins);
+    jsonArray = JSON.stringify(saveArray);
+    cookieManagerObject.setCookie("stats", jsonArray, 365);
+    
 }
 
 function loadData(){
+    //grab the data and put it to the wins
+    let loadArray = [];
+    jsonArray = cookieManagerObject.getCookie("stats");
+    loadArray = JSON.parse(jsonArray);
 
+    playerWins = loadArray[0];
+    aiWins = loadArray[1];
+
+    txtPlayerWins.innerHTML = playerWins;
+    txtAIWins.innerHTML = aiWins;
 }
 
 //--------------------------------------------------------------EVENT LISTENERS
@@ -699,6 +716,18 @@ function main(){
     txtAIHealth = document.getElementById("aiHealth");
     txtAIMaxHealth = document.getElementById("aiMaxHealth");
     txtAIWins = document.getElementById("aiWins");
+
+    //get existing data from cookie if it exists
+    if (cookieManagerObject.getCookie("stats") === undefined){
+        //if there is no cookie, create a new one for use
+        console.log("No Cookie Located. Creating New One.");
+        saveData();
+    } else{
+        //if there is a cookie, then grab the data and set it
+        console.log("Cookie Located. Loading Data.");
+        loadData();
+    }
+
 
     divHowToPlay = document.getElementsByClassName("howtoplay__text")[0];
     divSelection = document.getElementsByClassName("selection")[0];
