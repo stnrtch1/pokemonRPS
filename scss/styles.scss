@@ -140,6 +140,72 @@ body{
     }
 }
 
+.options{
+    width: 450px;
+
+    @media #{$large-phone}{
+        width: 95%;
+    }
+
+    &__button{
+        background: none;
+        border: none;
+        font-size: 20px;
+        margin: 10px 0;
+        padding: 0;
+        font-style: italic;
+
+        &:hover{
+            color: #0000ff;
+            cursor: pointer;
+        }
+
+        @media #{$large-phone}{
+            font-size: 18px;
+        }
+    
+        @media #{$phone}{
+            font-size: 16px;
+        }
+    }
+
+    &__header{
+        @include sectionHeader();
+    }
+
+    &__form{
+
+        .formset{
+            display: flex;
+            flex-flow: column wrap;
+            margin-top: 10px;
+
+            input[type=number]{
+                width: 100px;
+            }
+        }
+
+    }
+
+    &__confirm{
+        display: flex;
+        margin-top: 10px;
+
+        .optionsForm__confirm{
+            @include importantButton(100px);
+
+            @media #{$large-phone}{
+                @include importantButton(95px);
+            }
+
+            @media #{$phone}{
+                @include importantButton(90px);
+            }
+        }
+        
+    }
+}
+
 .selection{
     width:450px;
 

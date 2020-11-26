@@ -46,6 +46,108 @@ body {
     display: none;
     margin: 10px 0; }
 
+.options {
+  width: 450px; }
+  @media screen and (max-width: 552px) {
+    .options {
+      width: 95%; } }
+  .options__button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin: 10px 0;
+    padding: 0;
+    font-style: italic; }
+    .options__button:hover {
+      color: #0000ff;
+      cursor: pointer; }
+    @media screen and (max-width: 552px) {
+      .options__button {
+        font-size: 18px; } }
+    @media screen and (max-width: 320px) {
+      .options__button {
+        font-size: 16px; } }
+  .options__header {
+    font-size: 30px;
+    font-weight: bold; }
+    @media screen and (max-width: 552px) {
+      .options__header {
+        font-size: 26px; } }
+    @media screen and (max-width: 320px) {
+      .options__header {
+        font-size: 22px; } }
+  .options__form .formset {
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 10px; }
+    .options__form .formset input[type=number] {
+      width: 100px; }
+  .options__confirm {
+    display: flex;
+    margin-top: 10px; }
+    .options__confirm .optionsForm__confirm {
+      width: 100px;
+      margin: 0 auto;
+      border-radius: 10px;
+      border: solid 2px black;
+      text-align: center;
+      margin-top: 15px;
+      font-size: 20px; }
+      .options__confirm .optionsForm__confirm:hover {
+        cursor: pointer;
+        background-color: #666666; }
+      .options__confirm .optionsForm__confirm:disabled {
+        cursor: not-allowed;
+        background-color: #CCCCCC; }
+      @media screen and (max-width: 552px) {
+        .options__confirm .optionsForm__confirm {
+          font-size: 18px; } }
+      @media screen and (max-width: 320px) {
+        .options__confirm .optionsForm__confirm {
+          font-size: 16px; } }
+      @media screen and (max-width: 552px) {
+        .options__confirm .optionsForm__confirm {
+          width: 95px;
+          margin: 0 auto;
+          border-radius: 10px;
+          border: solid 2px black;
+          text-align: center;
+          margin-top: 15px;
+          font-size: 20px; }
+          .options__confirm .optionsForm__confirm:hover {
+            cursor: pointer;
+            background-color: #666666; }
+          .options__confirm .optionsForm__confirm:disabled {
+            cursor: not-allowed;
+            background-color: #CCCCCC; } }
+  @media screen and (max-width: 552px) and (max-width: 552px) {
+    .options__confirm .optionsForm__confirm {
+      font-size: 18px; } }
+  @media screen and (max-width: 552px) and (max-width: 320px) {
+    .options__confirm .optionsForm__confirm {
+      font-size: 16px; } }
+      @media screen and (max-width: 320px) {
+        .options__confirm .optionsForm__confirm {
+          width: 90px;
+          margin: 0 auto;
+          border-radius: 10px;
+          border: solid 2px black;
+          text-align: center;
+          margin-top: 15px;
+          font-size: 20px; }
+          .options__confirm .optionsForm__confirm:hover {
+            cursor: pointer;
+            background-color: #666666; }
+          .options__confirm .optionsForm__confirm:disabled {
+            cursor: not-allowed;
+            background-color: #CCCCCC; } }
+  @media screen and (max-width: 320px) and (max-width: 552px) {
+    .options__confirm .optionsForm__confirm {
+      font-size: 18px; } }
+  @media screen and (max-width: 320px) and (max-width: 320px) {
+    .options__confirm .optionsForm__confirm {
+      font-size: 16px; } }
+
 .selection {
   width: 450px; }
   @media screen and (max-width: 552px) {

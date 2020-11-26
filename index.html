@@ -32,66 +32,91 @@
                 </div>
             </div>
 
-            <div class="selection">
-                <div class="selection__header">Select Your Types</div>
-                <div class="selection__selectedTypes">
-                    <button class="selected__type" disabled>?</button>
-                    <button class="selected__type" disabled>?</button>
-                </div>
-                <div class="selection__selectTypes">
-                    <button class="select__type select__type--Normal" id="Normal">Normal</button>
-                    <button class="select__type select__type--Fighting" id="Fighting">Fighting</button>
-                    <button class="select__type select__type--Flying" id="Flying">Flying</button>
-                    <button class="select__type select__type--Poison" id="Poison">Poison</button>
-                    <button class="select__type select__type--Ground" id="Ground">Ground</button>
-                    <button class="select__type select__type--Rock" id="Rock">Rock</button>
-                    <button class="select__type select__type--Bug" id="Bug">Bug</button>
-                    <button class="select__type select__type--Ghost" id="Ghost">Ghost</button>
-                    <button class="select__type select__type--Steel" id="Steel">Steel</button>
-                    <button class="select__type select__type--Fire" id="Fire">Fire</button>
-                    <button class="select__type select__type--Water" id="Water">Water</button>
-                    <button class="select__type select__type--Grass" id="Grass">Grass</button>
-                    <button class="select__type select__type--Electric" id="Electric">Electric</button>
-                    <button class="select__type select__type--Psychic" id="Psychic">Psychic</button>
-                    <button class="select__type select__type--Ice" id="Ice">Ice</button>
-                    <button class="select__type select__type--Dragon" id="Dragon">Dragon</button>
-                    <button class="select__type select__type--Dark" id="Dark">Dark</button>
-                    <button class="select__type select__type--Fairy" id="Fairy">Fairy</button>
-                </div>
-                <div class="selection__confirm">
-                    <button class="confirm__button" disabled>Ok?</button>
+            <div class="options">
+                <button class="options__button">Open Options</button>
+                <div class="options__form">
+                    <div class="options__header">Game Options</div>
+                
+                    <div class="formset">
+                        <label for="frmHealth">HP Value:</label>
+                        <input type="number" id="frmHealth" name="frmHealth" min="1" step="1">
+                    </div>
+                    <div class="formset">
+                        <label for="frmAttack">Attack Power:</label>
+                        <input type="number" id="frmAttack" name="frmAttack" min="1" step="1">
+                    </div>
+                    <div class="formset">
+                        <label for="frmTurns">Turn Count:</label>
+                        <input type="number" id="frmTurns" name="frmTurns" min="0" max="5" step="1">
+                    </div>
+                    <div class="options__confirm">
+                        <button class="optionsForm__confirm">Confirm</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="battlezone">
-                <div class="battlezone__header">Battle Time</div>
-                <div class="turncount">Turn <span id="turnCount">?</span> / <span id="maxTurns">?</span></div>
-                <div class="healthsets">
-                    <div class="healthset">
-                        Player <br>
-                        <span id="playerHealth">?</span> / <span id="playerMaxHealth">?</span> HP <br>
-                        Times Won: <span id="playerWins">0</span>
+            <div class="game">
+                <div class="selection">
+                    <div class="selection__header">Select Your Types</div>
+                    <div class="selection__selectedTypes">
+                        <button class="selected__type" disabled>?</button>
+                        <button class="selected__type" disabled>?</button>
                     </div>
-                    <div class="healthset">
-                        A.I. <br>
-                        <span id="aiHealth">?</span> / <span id="aiMaxHealth">?</span> HP <br>
-                        Times Won: <span id="aiWins">0</span>
+                    <div class="selection__selectTypes">
+                        <button class="select__type select__type--Normal" id="Normal">Normal</button>
+                        <button class="select__type select__type--Fighting" id="Fighting">Fighting</button>
+                        <button class="select__type select__type--Flying" id="Flying">Flying</button>
+                        <button class="select__type select__type--Poison" id="Poison">Poison</button>
+                        <button class="select__type select__type--Ground" id="Ground">Ground</button>
+                        <button class="select__type select__type--Rock" id="Rock">Rock</button>
+                        <button class="select__type select__type--Bug" id="Bug">Bug</button>
+                        <button class="select__type select__type--Ghost" id="Ghost">Ghost</button>
+                        <button class="select__type select__type--Steel" id="Steel">Steel</button>
+                        <button class="select__type select__type--Fire" id="Fire">Fire</button>
+                        <button class="select__type select__type--Water" id="Water">Water</button>
+                        <button class="select__type select__type--Grass" id="Grass">Grass</button>
+                        <button class="select__type select__type--Electric" id="Electric">Electric</button>
+                        <button class="select__type select__type--Psychic" id="Psychic">Psychic</button>
+                        <button class="select__type select__type--Ice" id="Ice">Ice</button>
+                        <button class="select__type select__type--Dragon" id="Dragon">Dragon</button>
+                        <button class="select__type select__type--Dark" id="Dark">Dark</button>
+                        <button class="select__type select__type--Fairy" id="Fairy">Fairy</button>
+                    </div>
+                    <div class="selection__confirm">
+                        <button class="confirm__button" disabled>Ok?</button>
                     </div>
                 </div>
-                <div class="moves">
-                    <button class="move" id="move1">?</button>
-                    <button class="move" id="move2">?</button>
-                    <button class="move" id="move3">?</button>
-                    <button class="move" id="move4">?</button>
-                    <button class="move" id="move5">?</button>
+
+                <div class="battlezone">
+                    <div class="battlezone__header">Battle Time</div>
+                    <div class="turncount">Turn <span id="turnCount">?</span> / <span id="maxTurns">?</span></div>
+                    <div class="healthsets">
+                        <div class="healthset">
+                            Player <br>
+                            <span id="playerHealth">?</span> / <span id="playerMaxHealth">?</span> HP <br>
+                            Times Won: <span id="playerWins">0</span>
+                        </div>
+                        <div class="healthset">
+                            A.I. <br>
+                            <span id="aiHealth">?</span> / <span id="aiMaxHealth">?</span> HP <br>
+                            Times Won: <span id="aiWins">0</span>
+                        </div>
+                    </div>
+                    <div class="moves">
+                        <button class="move" id="move1">?</button>
+                        <button class="move" id="move2">?</button>
+                        <button class="move" id="move3">?</button>
+                        <button class="move" id="move4">?</button>
+                        <button class="move" id="move5">?</button>
+                    </div>
+                    <div class="nextround">
+                        <button class="nextround__button">Next Round</button>
+                    </div>
+                    <div class="reset">
+                        <button class="reset__button">New Game</button>
+                    </div>
+                    <div class="textbox">Battle notes and results will show up here. <br></div>
                 </div>
-                <div class="nextround">
-                    <button class="nextround__button">Next Round</button>
-                </div>
-                <div class="reset">
-                    <button class="reset__button">New Game</button>
-                </div>
-                <div class="textbox">Battle notes and results will show up here. <br></div>
             </div>
 
             

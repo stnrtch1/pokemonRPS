@@ -3,7 +3,6 @@ To-Dos:
 - Add customizeable HP, attack power and turn counters
 
 Ideas:
-- Win counter for Player and AI, could use a cookie to let it tracker over multiple games
 - Add a stat counters for various things, i.e. wins, loses, moves used/selected
 - Look into using a JSON file for handling the types
 - Make a game mode where there's a 50/50 chance on who goes first
