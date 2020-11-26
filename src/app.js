@@ -455,6 +455,25 @@ function disableMoves(){
     }
 }
 
+function resetGame(){
+    //this function is called when the game needs to be reset when the options form is set
+    //reset hp and turn counters
+    playerHealth = playerMaxHealth;
+    aiHealth = aiMaxHealth;
+
+    //clear the players moves
+    clearMoves();
+
+    //hide the new game/round buttons when done
+    btnNewGame.style.display = "None";
+    btnNextRound.style.display = "None";
+
+    //return to the selection screen
+    divSelection.style.display = "block";
+    divBattlezone.style.display = "none";
+    
+}
+
 //SAVING AND LOADING COOKIE DATA
 function updateWins($winner){
     if($winner == 0){
@@ -588,11 +607,36 @@ function onHowToPlay(){
 }
 
 function onOptionsToggle(){
-
+    //toggle the options section based on if it's showing or not
+    if(window.getComputedStyle(divOptions).display === "none"){
+        divOptions.style.display = "block";
+        btnOptions.innerHTML = "Close Options";
+        divGame.style.display = "none";
+        //populate the form data with the current values
+        frmHealth.value = playerMaxHealth;
+        frmAttack.value = baseDamage;
+        frmTurns.value = maxTurns;
+    }else{
+        divOptions.style.display = "none";
+        btnOptions.innerHTML = "Open Options";
+        divGame.style.display = "block";
+    }
 }
 
 function onOptionsConfirm(){
+    //take the values from the form and put them into the game
+    playerMaxHealth = frmHealth.value;
+    aiMaxHealth = frmHealth.value;
+    baseDamage = frmAttack.value;
+    maxTurns = frmTurns.value;
 
+    //now restart the current game
+    resetGame();
+
+    //then hide the options form and re-open the game view
+    divOptions.style.display = "none";
+    btnOptions.innerHTML = "Open Options";
+    divGame.style.display = "block";
 }
 
 function onConfirmTypes(){
@@ -681,7 +725,7 @@ function onAttack($moveIndex){
             updateWins(1);
         }else{
             turnCount++;
-            if(turnCount > 3){
+            if(turnCount > maxTurns){
                 //return the player to type selection screen
                 console.log("Round is over.");
                 btnNextRound.style.display = "Block";
