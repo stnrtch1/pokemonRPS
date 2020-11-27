@@ -62,6 +62,7 @@ let txtAIWins;
 let frmHealth;
 let frmAttack;
 let frmTurns;
+let txtError;
 
 //type arrays
 let typeArray = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"];
@@ -624,19 +625,38 @@ function onOptionsToggle(){
 }
 
 function onOptionsConfirm(){
-    //take the values from the form and put them into the game
-    playerMaxHealth = frmHealth.value;
-    aiMaxHealth = frmHealth.value;
-    baseDamage = frmAttack.value;
-    maxTurns = frmTurns.value;
+    //check the values submitted in the form before doing anything
+    let health = frmHealth.value;
+    let attack = frmAttack.value;
+    let turns = frmTurns.value;
 
-    //now restart the current game
-    resetGame();
+    if((health == "")||(attack == "")||(turns == "")){
+        txtError.innerHTML = "One or more values are empty!";
+    }else{
+        if((health <= 0)||(attack <= 0)||(turns <= 0)){
+            txtError.innerHTML = "One or more values are set to or are less than zero!";
+        }else{
+            //everything is good to go
+            //take the values from the form and put them into the game
+            playerMaxHealth = frmHealth.value;
+            aiMaxHealth = frmHealth.value;
+            baseDamage = frmAttack.value;
+            maxTurns = frmTurns.value;
 
-    //then hide the options form and re-open the game view
-    divOptions.style.display = "none";
-    btnOptions.innerHTML = "Open Options";
-    divGame.style.display = "block";
+            //now restart the current game
+            resetGame();
+
+            //clear error text
+            txtError.innerHTML = "";
+
+            //then hide the options form and re-open the game view
+            divOptions.style.display = "none";
+            btnOptions.innerHTML = "Open Options";
+            divGame.style.display = "block"; 
+        }
+    }
+
+    
 }
 
 function onConfirmTypes(){
@@ -778,6 +798,7 @@ function main(){
     txtAIHealth = document.getElementById("aiHealth");
     txtAIMaxHealth = document.getElementById("aiMaxHealth");
     txtAIWins = document.getElementById("aiWins");
+    
 
     //get existing data from cookie if it exists
     if (cookieManagerObject.getCookie("stats") === undefined){
@@ -799,6 +820,7 @@ function main(){
     frmHealth = document.getElementById("frmHealth");
     frmAttack = document.getElementById("frmAttack");
     frmTurns = document.getElementById("frmTurns");
+    txtError = document.getElementsByClassName("optionsForm__error")[0];
 
     //initialize event listeners
     btnSelectedTypeOne = document.getElementsByClassName("selected__type")[0];

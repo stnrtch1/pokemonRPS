@@ -190,6 +190,7 @@ body{
 
     &__confirm{
         display: flex;
+        flex-flow: column;
         margin-top: 10px;
 
         .optionsForm__confirm{
@@ -202,6 +203,12 @@ body{
             @media #{$phone}{
                 @include importantButton(90px);
             }
+        }
+
+        .optionsForm__error{
+            margin-top: 10px;
+            color: #ff0000;
+            font-style: italic;
         }
         
     }
