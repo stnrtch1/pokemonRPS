@@ -624,9 +624,42 @@ body {
     .battlezone .turncount > * {
       margin: 0 5px; }
   .battlezone .healthsets {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between; }
+    position: relative;
+    color: #ffffff; }
+    .battlezone .healthsets__image {
+      max-width: 100%; }
+    .battlezone .healthsets__player {
+      position: absolute;
+      top: 35%;
+      left: 15%; }
+      @media screen and (max-width: 552px) {
+        .battlezone .healthsets__player {
+          left: 10%;
+          font-size: 16px; } }
+      @media screen and (max-width: 440px) {
+        .battlezone .healthsets__player {
+          left: 5%;
+          top: 30%; } }
+      @media screen and (max-width: 320px) {
+        .battlezone .healthsets__player {
+          top: 25%;
+          font-size: 14px; } }
+    .battlezone .healthsets__ai {
+      position: absolute;
+      top: 35%;
+      left: 65%;
+      text-align: right; }
+      @media screen and (max-width: 552px) {
+        .battlezone .healthsets__ai {
+          font-size: 16px; } }
+      @media screen and (max-width: 440px) {
+        .battlezone .healthsets__ai {
+          left: 60%;
+          top: 30%; } }
+      @media screen and (max-width: 320px) {
+        .battlezone .healthsets__ai {
+          top: 25%;
+          font-size: 14px; } }
   .battlezone .moves {
     display: flex;
     flex-flow: row wrap;

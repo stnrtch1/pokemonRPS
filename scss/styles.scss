@@ -1,3 +1,9 @@
+//sass variables
+$tablet: "screen and (max-width:768px)";
+$large-phone: "screen and (max-width:552px)";
+$medium-phone: "screen and (max-width:440px)";
+$phone: "screen and (max-width:320px)";
+
 @mixin typeContainer($color){
     width: 100px;
     font-size: 20px;
@@ -15,6 +21,7 @@
         font-size: 18px;
         width: 95px;
     }
+    
 
     @media #{$phone}{
         font-size: 16px;
@@ -77,12 +84,6 @@
         font-size: 22px;
     }
 }
-
-//sass variables
-$tablet: "screen and (max-width:768px)";
-$large-phone: "screen and (max-width:552px)";
-$phone: "screen and (max-width:320px)";
-
 
 body{
     font-family: Arial, Helvetica, sans-serif;
@@ -433,9 +434,60 @@ body{
     }
 
     .healthsets{
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
+        // display: flex;
+        // flex-flow: row wrap;
+        // justify-content: space-between;
+
+        position: relative;
+        color: #ffffff;
+        
+
+        &__image{
+            max-width: 100%;
+        }
+
+        &__player{
+            position: absolute;
+            top: 35%;
+            left: 15%;
+
+            @media #{$large-phone}{
+                left: 10%;
+                font-size: 16px;
+            }
+
+            @media #{$medium-phone}{
+                left: 5%;
+                top: 30%;
+            }
+
+            @media #{$phone}{
+                top: 25%;
+                font-size: 14px;
+            }
+        }
+
+        &__ai{
+            position: absolute;
+            top: 35%;
+            left: 65%;
+            text-align: right;
+
+            @media #{$large-phone}{
+                font-size: 16px;
+            }
+
+            @media #{$medium-phone}{
+                left: 60%;
+                top: 30%;
+            }
+
+            @media #{$phone}{
+                top: 25%;
+                font-size: 14px;
+            }
+        }
+
     }
 
     .moves{
