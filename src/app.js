@@ -7,6 +7,9 @@ let cookieManagerObject = cookieManager;
 //json array that will be used for saving stuff into the cookie
 let jsonArray;
 
+//sound object
+let soundObject = new Audio();
+
 //html elements
 let divHowToPlay;
 let divOptions;
@@ -156,6 +159,10 @@ function compareTypes($type,$mode){
         0: The types being compared belong to the AI
         1: The types being compared belong to the Player
     */
+
+    //play attacking sound effect
+    soundObject.src = "lib/"+$type+".wav";
+    soundObject.play();
 
     //Take the move and compare it to what the enemy's types are
     //first check if the opponent has one type or two
