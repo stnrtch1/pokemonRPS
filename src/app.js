@@ -104,13 +104,13 @@ function sectionSwap(){
     //Once the battle screen hits the end of the third turn, then the player hits a button to go back to the type selection screen
     
     //getComputedStyle gets the computed styles from the window and allows them to values to be checked
-    if(window.getComputedStyle(divSelection).display === "block"){
-        divSelection.style.display = "none";
-        divBattlezone.style.display = "block";
-    }else{
-        divSelection.style.display = "block";
-        divBattlezone.style.display = "none";
-    }
+    // if(window.getComputedStyle(divSelection).display === "block"){
+    //     divSelection.style.display = "none";
+    //     divBattlezone.style.display = "block";
+    // }else{
+    //     divSelection.style.display = "block";
+    //     divBattlezone.style.display = "none";
+    // }
 }
 
 function enableTypes($type,$mode){
@@ -600,34 +600,6 @@ function removeType($index){
     }
 }
 
-function onHowToPlay(){
-    //toggle the how to play section based on if it's showing or not
-    // if(window.getComputedStyle(divHowToPlay).display === "none"){
-    //     divHowToPlay.style.display = "block";
-    //     btnHowToPlay.innerHTML = "Hide This Section";
-    // }else{
-    //     divHowToPlay.style.display = "none";
-    //     btnHowToPlay.innerHTML = "How To Play";
-    // }
-}
-
-function onOptionsToggle(){
-    //toggle the options section based on if it's showing or not
-    if(window.getComputedStyle(divOptions).display === "none"){
-        divOptions.style.display = "block";
-        btnOptions.innerHTML = "Close Options";
-        divGame.style.display = "none";
-        //populate the form data with the current values
-        frmHealth.value = playerMaxHealth;
-        frmAttack.value = baseDamage;
-        frmTurns.value = maxTurns;
-    }else{
-        divOptions.style.display = "none";
-        btnOptions.innerHTML = "Open Options";
-        divGame.style.display = "block";
-    }
-}
-
 function onOptionsConfirm(){
     //check the values submitted in the form before doing anything
     let health = frmHealth.value;
@@ -652,11 +624,7 @@ function onOptionsConfirm(){
 
             //clear error text
             txtError.innerHTML = "";
-
-            //then hide the options form and re-open the game view
-            divOptions.style.display = "none";
-            btnOptions.innerHTML = "Open Options";
-            divGame.style.display = "block"; 
+            
         }
     }
 
@@ -887,8 +855,6 @@ function main(){
     btnDark.addEventListener("click", () => {addType("Dark");});
     btnFairy.addEventListener("click", () => {addType("Fairy");});
 
-    btnHowToPlay.addEventListener("click", onHowToPlay);
-    btnOptions.addEventListener("click", onOptionsToggle);
     btnOptionsConfirm.addEventListener("click", onOptionsConfirm);
     btnConfirm.addEventListener("click", onConfirmTypes);
     btnNextRound.addEventListener("click", onNextRound);
@@ -910,13 +876,45 @@ main();
 $(document).ready(function(){
     console.log("JQuery Loaded!");
 
-    $(".howtoplay__button").click(function(){
-        $(".howtoplay__text").slideToggle(500, function(){
-            if($(".howtoplay__text").is(":visible")){
-                $(".howtoplay__button").text("Hide This Section");
+    function toggleOptions(){
+        if($(divGame).is(":visible")){
+            $(divGame).fadeOut(function(){
+                $(divOptions).fadeIn();
+                //populate the form data with the current values
+                frmHealth.value = playerMaxHealth;
+                frmAttack.value = baseDamage;
+                frmTurns.value = maxTurns;
+                $(btnOptions).text("Close Options");
+            });
+        }else{
+            $(divOptions).fadeOut(function(){
+                $(divGame).fadeIn();
+                $(btnOptions).text("Open Options");
+            });
+        }
+    }
+
+    //slide toggle how to play section
+    $(btnHowToPlay).click(function(){
+        $(divHowToPlay).slideToggle(500, function(){
+            if($(divHowToPlay).is(":visible")){
+                $(btnHowToPlay).text("Hide This Section");
             }else{
-                $(".howtoplay__button").text("How to Play");
+                $(btnHowToPlay).text("How to Play");
             }
         });
     });
+
+    //fade toggle option section
+    $(btnOptions).click(function(){
+        toggleOptions();
+    });
+
+    $(btnOptionsConfirm).click(function(){
+        toggleOptions();
+    });
+
+
+    //fade toggle selection and battlezones
+
 });
