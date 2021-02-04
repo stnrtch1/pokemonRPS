@@ -4,6 +4,9 @@ import {cookieManager} from "./CookieManager.js";
 //CookieManager object
 let cookieManagerObject = cookieManager;
 
+//jQuery Functions
+let jQueryFunc = {};
+
 //json array that will be used for saving stuff into the cookie
 let jsonArray;
 
@@ -625,6 +628,10 @@ function onOptionsConfirm(){
             //clear error text
             txtError.innerHTML = "";
             
+            jQueryFunc.ToggleOptions();
+
+
+            
         }
     }
 
@@ -685,7 +692,8 @@ function onConfirmTypes(){
     setupGame();
 
     //swap the game view
-    sectionSwap();
+    // sectionSwap();
+    jQueryFunc.SectionSwap();
 
 }
 
@@ -741,7 +749,8 @@ function onNextRound(){
     btnNextRound.style.display = "none";
 
     //swap the game view
-    sectionSwap();
+    // sectionSwap();
+    jQueryFunc.SectionSwap();
 
 }
 
@@ -757,7 +766,9 @@ function onNewGame(){
     btnNewGame.style.display = "None";
 
     //swap the game view
-    sectionSwap();
+    // sectionSwap();
+    jQueryFunc.SectionSwap();
+
 }
 
 
@@ -876,6 +887,20 @@ main();
 $(document).ready(function(){
     console.log("JQuery Loaded!");
 
+    let sectionSwap = function(){
+        if($(divSelection).is(":visible")){
+            $(divSelection).fadeOut(function(){
+                $(divBattlezone).fadeIn();
+            });
+        }else{
+            $(divBattlezone).fadeOut(function(){
+                $(divSelection).fadeIn();
+            });
+        }
+            
+    }
+    jQueryFunc.SectionSwap = sectionSwap;
+
     function toggleOptions(){
         if($(divGame).is(":visible")){
             $(divGame).fadeOut(function(){
@@ -893,8 +918,9 @@ $(document).ready(function(){
             });
         }
     }
+    jQueryFunc.ToggleOptions = toggleOptions;
 
-    //slide toggle how to play section
+    //slideToggle how to play section
     $(btnHowToPlay).click(function(){
         $(divHowToPlay).slideToggle(500, function(){
             if($(divHowToPlay).is(":visible")){
@@ -905,16 +931,9 @@ $(document).ready(function(){
         });
     });
 
-    //fade toggle option section
+    //fadeToggle option section
     $(btnOptions).click(function(){
         toggleOptions();
     });
-
-    $(btnOptionsConfirm).click(function(){
-        toggleOptions();
-    });
-
-
-    //fade toggle selection and battlezones
 
 });
