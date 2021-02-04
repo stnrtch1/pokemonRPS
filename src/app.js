@@ -602,13 +602,13 @@ function removeType($index){
 
 function onHowToPlay(){
     //toggle the how to play section based on if it's showing or not
-    if(window.getComputedStyle(divHowToPlay).display === "none"){
-        divHowToPlay.style.display = "block";
-        btnHowToPlay.innerHTML = "Hide This Section";
-    }else{
-        divHowToPlay.style.display = "none";
-        btnHowToPlay.innerHTML = "How To Play";
-    }
+    // if(window.getComputedStyle(divHowToPlay).display === "none"){
+    //     divHowToPlay.style.display = "block";
+    //     btnHowToPlay.innerHTML = "Hide This Section";
+    // }else{
+    //     divHowToPlay.style.display = "none";
+    //     btnHowToPlay.innerHTML = "How To Play";
+    // }
 }
 
 function onOptionsToggle(){
@@ -909,4 +909,14 @@ main();
 //JQUERY FUNCTIONS
 $(document).ready(function(){
     console.log("JQuery Loaded!");
+
+    $(".howtoplay__button").click(function(){
+        $(".howtoplay__text").slideToggle(500, function(){
+            if($(".howtoplay__text").is(":visible")){
+                $(".howtoplay__button").text("Hide This Section");
+            }else{
+                $(".howtoplay__button").text("How to Play");
+            }
+        });
+    });
 });
