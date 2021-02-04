@@ -4,7 +4,12 @@
   "description": "Node package mostly used for styling with gulp",
   "main": "index.js",
   "type": "module",
+  "scripts": {
+    "build": "babel src -d build"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
@@ -13,6 +18,7 @@
   "dependencies": {
     "babel": "^6.23.0",
     "gulp": "^4.0.0",
+    "jquery": "^3.5.1",
     "velocity-animate": "^2.0.6"
   },
   "author": "Austin Rtichie",

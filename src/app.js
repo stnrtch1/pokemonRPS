@@ -9,6 +9,7 @@ let jsonArray;
 
 //sound object
 let soundObject = new Audio();
+let soundArray = [];
 
 //html elements
 let divHowToPlay;
@@ -159,10 +160,6 @@ function compareTypes($type,$mode){
         0: The types being compared belong to the AI
         1: The types being compared belong to the Player
     */
-
-    //play attacking sound effect
-    soundObject.src = "lib/"+$type+".wav";
-    soundObject.play();
 
     //Take the move and compare it to what the enemy's types are
     //first check if the opponent has one type or two
@@ -733,6 +730,7 @@ function onAttack($moveIndex){
     txtTextbox.innerHTML += "You used " + typeText + "! <br>";
 
     compareTypes(typeText,0);
+    soundArray.push(typeText);
     
     //check if the AI is out of HP
     if(aiHealth <= 0){
@@ -907,3 +905,8 @@ function main(){
 
 
 main();
+
+//JQUERY FUNCTIONS
+$(document).ready(function(){
+    console.log("JQuery Loaded!");
+});
